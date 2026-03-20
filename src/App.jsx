@@ -8,7 +8,8 @@ import ScrollToTop from "./components/Scroll";
 import ScrollDown from "./components/ScrollDown";
 import Projects from "./components/Projects";
 import Contact from "./components/Contact";
-import { createContext } from "react";
+import Footer from "./components/Footer";
+import { createContext, useState } from "react";
 
 import {
   navItems,
@@ -21,13 +22,22 @@ import {
   ProjectsData,
   ContactData,
   ContactFormData,
+  FooterData,
 } from "./data";
 const ContactFormContext = createContext(ContactFormData);
 export { ContactFormContext };
 function App() {
+  const [isOpen, setIsOpen] = useState(false);
+
   return (
     <>
-      <Navbar navItems={navItems} />
+      {isOpen && (
+        <div
+          className="fixed inset-0 bg-white/70 backdrop-blur-md bg-opacity-50 z-50"
+          onClick={() => setIsOpen(false)}
+        />
+      )}
+      <Navbar navItems={navItems} isOpen={isOpen} setIsOpen={setIsOpen} />
       <ScrollToTop />
 
       <main className="max-w-7xl pt-24">
@@ -42,6 +52,7 @@ function App() {
           <Contact data={ContactData} />
         </ContactFormContext.Provider>
       </main>
+      <Footer data={FooterData}/>
     </>
   );
 }

@@ -17,7 +17,20 @@ import File from "./assets/images/Projects/FileManagement.jpg";
 import Social from "./assets/images/Projects/PostBlug.jpg";
 import Travel from "./assets/images/Projects/Travel.jpeg";
 import { LuMoveUpRight } from "react-icons/lu";
-import { Mail, Phone, MapPin, Github, Linkedin } from "lucide-react";
+import { Mail, Phone, MapPin } from "lucide-react";
+import { FaFacebookF,FaGithub, FaTelegramPlane } from "react-icons/fa";
+import { RiLinkedinFill } from "react-icons/ri";
+import { BsInstagram } from "react-icons/bs";
+
+import ContactIcon from "./components/ContactIcon";
+import {
+  FiCode,
+  FiLayout,
+  FiServer,
+  FiDatabase,
+  FiLayers,
+  FiTool,
+} from "react-icons/fi";
 
 export const AboutDescription =
   "Full Stack Developer  specializing in Laravel and React, experienced in building scalable REST APIs and modern responsive web applications. Strong background in backend architecture, database optimization, and clean code practices.";
@@ -42,14 +55,6 @@ export const HeroItem = {
   Dots: Dots,
   CV: CV,
 };
-import {
-  FiCode,
-  FiLayout,
-  FiServer,
-  FiDatabase,
-  FiLayers,
-  FiTool,
-} from "react-icons/fi";
 
 export const AboutItem = {
   icons,
@@ -272,25 +277,26 @@ export const ContactData = {
   contacts: [
     {
       id: 1,
-      name: "Location",
-      icon: <MapPin size={18} />,
-      value: "Damascus, Syria",
+      name: "Phone",
+      icon: <ContactIcon Icon={Phone}></ContactIcon>,
+      value: "+963 934226600",
     },
+
     {
       id: 2,
       name: "Email",
-      icon: <Mail size={18} />,
+      icon: <ContactIcon Icon={Mail}></ContactIcon>,
       value: "zed.kreshati.2001@gmail.com",
     },
+
     {
       id: 3,
-      name: "Phone",
-      icon: <Phone size={18} />,
-      value: "+963934226600",
+      name: "Location",
+      icon: <ContactIcon Icon={MapPin}></ContactIcon>,
+      value: "Damascus, Syria",
     },
   ],
 };
-
 
 export const ContactFormData = {
   title: "Contact Me",
@@ -325,4 +331,41 @@ export const ContactFormData = {
     },
   ],
   buttonText: "Send Message",
+};
+
+export const FooterData = {
+  copyright: "@ 2026. All Rights Reserved",
+  developmentBy: "Zaid Kreshati",
+  socialMedia: [
+    {
+      id: 1,
+      name: "Facebook",
+      icon: <ContactIcon Icon={FaFacebookF }></ContactIcon>,
+      url: "https://www.facebook.com/your-username",
+    },
+    {
+      id: 2,
+      name: "GitHub",
+      icon: <ContactIcon Icon={FaGithub }></ContactIcon>,
+      url: "https://github.com/your-username",
+    },
+    {
+      id: 3,
+      name: "LinkedIn",
+      icon: <ContactIcon Icon={RiLinkedinFill}></ContactIcon>,
+      url: "https://www.linkedin.com/in/your-username",
+    },
+    {
+      id: 4,
+      name: "Telegram",
+      icon: <ContactIcon Icon={ FaTelegramPlane}></ContactIcon>,
+      url: "https://t.me/your-username",
+    },
+    {
+      id: 5,
+      name: "Instagram",
+      icon: <ContactIcon Icon={BsInstagram}></ContactIcon>,
+      url: "https://www.instagram.com/your-username",
+    },
+  ],
 };
