@@ -1,3 +1,5 @@
+import SectionTitle from "../ui/SectionTitle";
+
 const About = ({ data }) => {
   return (
     <section className="pt-60 flex items-center gap-16 px-20">
@@ -13,7 +15,7 @@ const About = ({ data }) => {
 
       {/* Content */}
       <div className="flex-1">
-        <h2 className="text-3xl font-bold mb-4">About Me</h2>
+        <SectionTitle data={data.titleComponent}></SectionTitle>
 
         <p className="mb-8 text-gray-600 leading-relaxed">
           {data.description}

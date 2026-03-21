@@ -1,3 +1,4 @@
+import MainButton from "../ui/MainButton";
 const Hero = ({ data }) => {
   return (
     <>
@@ -31,11 +32,13 @@ const Hero = ({ data }) => {
 
       {/* Hero section */}
       <div className="max-w-7xl mx-20 px-6 z-0 pt-30 pb-20 ">
-        <h1 className="text-5xl font-bold mb-4">{data.title}
-          <br/>
-           <span className="text-violet-600 ">{data.subtitle}</span>
+        <h1 className="text-5xl font-bold mb-4">
+          {data.title}
+          <br />
+          <span className="text-sky-600 ">{data.subtitle}</span>
         </h1>
-       
+
+
         <p className="text-lg mt-4 w-100 leading-relaxed">{data.description}</p>
 
         {/* <button
@@ -45,17 +48,21 @@ const Hero = ({ data }) => {
           {data.button}
         </button> */}
 
-        <div className="mt-4 w-40 text-center py-2 bg-violet-500 text-white rounded-md   cursor-pointer hover:bg-sky-500">
-          <a href={data.CV} download="Zaid Kreshati Cv.pdf">
-            {data.button}
-          </a>
-        </div>
-
-        <img
-          src={data.Dots}
-          className="absolute bottom-5 left-0 w-screen h-auto object-contain -z-40 pointer-events-none"
-        />
+        <MainButton
+          className="mt-4"
+          sizes="lg"
+          children={
+            <a href={data.CV} download="Zaid Kreshati Cv.pdf">
+              Download CV
+            </a>
+          }
+        ></MainButton>
       </div>
+
+      <img
+        src={data.Dots}
+        className="absolute bottom-5 left-0 w-screen h-auto object-contain -z-40 pointer-events-none"
+      />
     </>
   );
 };

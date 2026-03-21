@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import MainButton from "../ui/MainButton";
 
 const Projects = ({ data }) => {
   const [selectedProject, setSelectedProject] = useState(null);
@@ -7,18 +8,23 @@ const Projects = ({ data }) => {
     <section className="py-16 px-6 center">
       <div className="max-w-6xl mx-auto">
         <div className="flex justify-between items-center">
-         <div className="text-left">
-             <h2 className="text-xl text-sky-500 font-bold  ">{data.title}</h2>
+          <div className="text-left">
+            <h2 className="text-xl text-sky-500 font-bold  ">{data.title}</h2>
 
-          <p className="text-center text-2xl text-gray-600 mb-12">
-            {data.description}
-          </p>
-         </div>
+            <p className="text-center text-2xl text-gray-600 mb-12">
+              {data.description}
+            </p>
+          </div>
 
-          <button className="bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600 transition flex items-center gap-2">
+           <MainButton
+            variant="primary"
+            size="md"
+          >
             {data.button.name}
             {data.button.icon}
-          </button>
+          </MainButton>
+
+
         </div>
 
         {/* Cards */}

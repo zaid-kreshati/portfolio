@@ -1,4 +1,5 @@
 import React from "react";
+import MainButton from "./ui/MainButton";
 
 const Footer = ({ data }) => {
   return (
@@ -18,12 +19,18 @@ const Footer = ({ data }) => {
             rel="noopener noreferrer"
 
           >
-            <div
-              className=" relative flex m-2 h-10 w-10 items-center justify-center rounded-2xl bg-sky-500  border-2 border-sky-300 overflow-hidden  cursor-pointer 
+            {/* <div
+              className=" relative flex m-2 h-10 w-10 items-center justify-center rounded-2xl bg-sky-600   border-2 border-sky-300 overflow-hidden  cursor-pointer 
                   transition-transform duration-300 hover:scale-125"
             >
               {item.icon}
-            </div>
+            </div> */}
+
+            <MainButton 
+            variant="icon"
+            size="sm"
+            children={item.icon}
+            />
             {/* <span>{item.name}</span> */}
           </a>
         ))}

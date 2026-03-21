@@ -16,13 +16,17 @@ import Search from "./assets/images/Projects/search_engines.webp";
 import File from "./assets/images/Projects/FileManagement.jpg";
 import Social from "./assets/images/Projects/PostBlug.jpg";
 import Travel from "./assets/images/Projects/Travel.jpeg";
+import Home from "./assets/images/Projects/HomeService.jpeg";
+import Task from "./assets/images/Projects/TaskImage.jpeg";
+
+
 import { LuMoveUpRight } from "react-icons/lu";
 import { Mail, Phone, MapPin } from "lucide-react";
-import { FaFacebookF,FaGithub, FaTelegramPlane } from "react-icons/fa";
+import { FaFacebookF, FaGithub, FaTelegramPlane } from "react-icons/fa";
 import { RiLinkedinFill } from "react-icons/ri";
 import { BsInstagram } from "react-icons/bs";
 
-import ContactIcon from "./components/ContactIcon";
+import Icon from "./components/ui/Icon";
 import {
   FiCode,
   FiLayout,
@@ -32,12 +36,21 @@ import {
   FiTool,
 } from "react-icons/fi";
 
-export const AboutDescription =
-  "Full Stack Developer  specializing in Laravel and React, experienced in building scalable REST APIs and modern responsive web applications. Strong background in backend architecture, database optimization, and clean code practices.";
-
+export const AboutDescription = `
+Solution-oriented Full Stack Developer and Software Engineer specializing in Laravel and React.
+Experienced in building scalable systems, robust REST APIs, and efficient database solutions.
+Strong background in backend architecture, clean code practices, and delivering end-to-end projects across the SDLC.
+`;
 export const navItems = {
   name: "Zaid",
-  sections: ["Home", "About me", "Education", "Projects", "Contact"],
+  sections: [
+    "Home",
+    "About me",
+    "Education",
+    "Achievements",
+    "Projects",
+    "Contact",
+  ],
   icon: <FaMoon />,
 };
 
@@ -57,6 +70,11 @@ export const HeroItem = {
 };
 
 export const AboutItem = {
+  titleComponent:{
+    title: "About Me",
+  subtitle: "Full Stack Developer",
+  description: "description",
+  },
   icons,
   description: AboutDescription,
   languages: [
@@ -119,6 +137,12 @@ export const SkillsItem = {
   ],
 };
 
+export const AchievementsItem = [
+  "Solved 300+ problems on Codeforces",
+  "Participant in Damascus Collegiate Programming Contest (DCPC)",
+  "Participant in World Robot Olympiad (WRO)",
+];
+
 export const EducationTrainingData = {
   title: "Education & Training",
   items: [
@@ -127,7 +151,6 @@ export const EducationTrainingData = {
       title: "Bachelor of Science in Software Engineering",
       organization: "University of Damascus, Damascus, Syria",
       date: "Jan 2020 -May 2025",
-      description: "",
     },
     {
       type: "Training",
@@ -181,7 +204,7 @@ export const ProjectsData = {
   button: {
     name: "view github",
     icon: <LuMoveUpRight />,
-    url: "https://github.com/your-username",
+    url: "https://github.com/zaid-kreshati",
   },
   projects: [
     {
@@ -199,12 +222,18 @@ export const ProjectsData = {
         "Google Maps",
         "DigitalOcean",
       ],
+      highlights: [
+        "Role-based system (admin, client, provider)",
+        "Dynamic priority scoring",
+        "Optimized with caching and indexing",
+      ],
+
       description: [
         "Built a scalable complaint management platform with role-based access (admin, client, provider)",
         "Implemented dynamic priority scoring based on urgency, attachments, and location",
         "Enhanced performance with indexing, caching, and scalable architecture",
       ],
-      github: "https://github.com/your-username/Athar",
+      github: "https://github.com/zaid-kreshati/The-Community-",
     },
     {
       id: 2,
@@ -218,13 +247,14 @@ export const ProjectsData = {
         "BERT",
         "Scikit-learn",
       ],
+      highlights: ["Implemented BM25, TF-IDF, BERT", "70.1% MAP score"],
       description: [
         "Built full search engine with FastAPI backend and React frontend",
         "Implemented BM25, TF-IDF, and BERT ranking algorithms",
         "Processed large datasets with embeddings and query expansion",
         "Achieved 70.1% MAP score on BEIR-Quora benchmark",
       ],
-      github: "https://github.com/your-username/Search-engine",
+      github: "https://github.com/zaid-kreshati/Search-engine",
     },
     {
       id: 3,
@@ -236,7 +266,7 @@ export const ProjectsData = {
         "Implemented check-in/check-out locking system",
         "Optimized performance with caching and pagination",
       ],
-      github: "https://github.com/your-username/File-management",
+      github: "https://github.com/zaid-kreshati/File-management",
     },
     {
       id: 4,
@@ -254,7 +284,7 @@ export const ProjectsData = {
         "Added tagging, nested comments, and Redis caching",
         "Implemented admin analytics dashboard",
       ],
-      github: "https://github.com/your-username/Post-blog",
+      github: "https://github.com/zaid-kreshati/Post-blog",
     },
     {
       id: 5,
@@ -266,10 +296,42 @@ export const ProjectsData = {
         "Managed hotels, cars, flights, and destinations",
         "Implemented booking workflow and favorites feature",
       ],
-      github: "https://github.com/your-username/TourismApp",
+      github: "https://github.com/zaid-kreshati/TourismApp",
+    },
+    {
+      id: 6,
+      name: "Task Management System",
+      image: Task,
+      technologies: ["Laravel", "Stripe", "Queue"],
+      highlights: [
+        "Subtasks, categories, payments",
+        "Scheduler & notifications",
+      ],
+      description: [
+        "Built task management system with subtasks, categories, and payments",
+        "Implemented scheduler for task automation and notifications",
+      ],
+      github: "https://github.com/zaid-kreshati/Task-management",
+    },
+    {
+      id: 7,
+      name: "Homy Home (API)",
+      image: Home,
+      technologies: ["Laravel", "Firebase"],
+      highlights: ["Real-time notifications", "Booking & rating system"],
+      description: [
+        "Built home service API with real-time notifications",
+        "Implemented booking workflow and rating system",
+      ],
+      github: "https://github.com/zaid-kreshati/Home-Service",
     },
   ],
 };
+
+export const LanguagesItem = [
+  { name: "Arabic", level: "Native" },
+  { name: "English", level: "Excellent" },
+];
 
 export const ContactData = {
   title: "Contact ",
@@ -278,21 +340,21 @@ export const ContactData = {
     {
       id: 1,
       name: "Phone",
-      icon: <ContactIcon Icon={Phone}></ContactIcon>,
-      value: "+963 934226600",
+      icon: <Icon Icon={Phone}></Icon>,
+      value: "+963 934 226 600",
     },
 
     {
       id: 2,
       name: "Email",
-      icon: <ContactIcon Icon={Mail}></ContactIcon>,
+      icon: <Icon Icon={Mail}></Icon>,
       value: "zed.kreshati.2001@gmail.com",
     },
 
     {
       id: 3,
       name: "Location",
-      icon: <ContactIcon Icon={MapPin}></ContactIcon>,
+      icon: <Icon Icon={MapPin}></Icon>,
       value: "Damascus, Syria",
     },
   ],
@@ -340,32 +402,32 @@ export const FooterData = {
     {
       id: 1,
       name: "Facebook",
-      icon: <ContactIcon Icon={FaFacebookF }></ContactIcon>,
-      url: "https://www.facebook.com/your-username",
+      icon: <Icon Icon={FaFacebookF}></Icon>,
+      url: "https://www.facebook.com/zed.kreshati/",
     },
     {
       id: 2,
       name: "GitHub",
-      icon: <ContactIcon Icon={FaGithub }></ContactIcon>,
-      url: "https://github.com/your-username",
+      icon: <Icon Icon={FaGithub}></Icon>,
+      url: "https://github.com/zaid-kreshati",
     },
     {
       id: 3,
       name: "LinkedIn",
-      icon: <ContactIcon Icon={RiLinkedinFill}></ContactIcon>,
-      url: "https://www.linkedin.com/in/your-username",
+      icon: <Icon Icon={RiLinkedinFill}></Icon>,
+      url: "https://www.linkedin.com/in/zaid-kreshati-38789b28b",
     },
     {
       id: 4,
       name: "Telegram",
-      icon: <ContactIcon Icon={ FaTelegramPlane}></ContactIcon>,
-      url: "https://t.me/your-username",
+      icon: <Icon Icon={FaTelegramPlane}></Icon>,
+      url: "https://t.me/zaid_kreshati",
     },
     {
       id: 5,
       name: "Instagram",
-      icon: <ContactIcon Icon={BsInstagram}></ContactIcon>,
-      url: "https://www.instagram.com/your-username",
+      icon: <Icon Icon={BsInstagram}></Icon>,
+      url: "https://www.instagram.com/zaid_kreshati",
     },
   ],
 };

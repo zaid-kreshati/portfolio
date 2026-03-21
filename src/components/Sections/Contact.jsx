@@ -1,5 +1,6 @@
 import React from "react";
-import ContactForm from "./ContactForm";
+import ContactForm from "../ContactForm";
+import MainButton from "../ui/MainButton";
 const Contact = ({ data }) => {
   return (
     <section className="py-16  ">
@@ -22,13 +23,20 @@ const Contact = ({ data }) => {
                 className="flex  items-left gap-3 items-center "
                 key={contact.id}
               >
-                <div
-                  className="relative flex h-14 w-14 items-center justify-center rounded-2xl bg-sky-500  border-2 border-sky-300 overflow-hidden  cursor-pointer 
+                {/* <div
+                  className="relative flex h-14 w-14 items-center justify-center rounded-2xl bg-sky-600  border-2 border-sky-300 overflow-hidden  cursor-pointer 
                   transition-transform duration-300 hover:scale-125"
                 >
-                  {/* Icon */}
                   {contact.icon}
-                </div>
+                </div> */}
+
+                <MainButton
+                  variant="contact"
+                  size="sq"
+                  className="bg-sky-600 text-white shadow-lg hover:bg-sky-500 hover:opacity-90 hover:scale-110 transition-all duration-300 backdrop-blur-lg"
+                >
+                  {contact.icon}
+                </MainButton>
 
                 <span>{contact.value}</span>
               </div>

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Menu } from "lucide-react";
-import MobileMenu from "./MobileMenu";
+import MobileMenu from "./ui/MobileMenu";
 import { Sun, Moon } from "lucide-react";
 
 const Navbar = ({ navItems, isOpen, setIsOpen }) => {
@@ -13,7 +13,7 @@ const Navbar = ({ navItems, isOpen, setIsOpen }) => {
         className="
         fixed top-5 left-1/2 -translate-x-1/2 w-full max-w-7xl
          px-6 py-4 flex items-center justify-between z-40 rounded-2xl
-          bg-white/30 dark:bg-gray-900/30 backdrop-blur-xl border
+          bg-white/30 dark:bg-gray-900/30 backdrop-blur-md border
            border-white/30 dark:border-white/10 shadow-[0_8px_32px_rgba(0,0,0,0.1)] "
       >
         {/* Left */}

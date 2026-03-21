@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import MainButton from "./ui/MainButton";
 
 const ScrollToTop = () => {
   const [visible, setVisible] = useState(false);
@@ -26,12 +27,11 @@ const ScrollToTop = () => {
 
   return (
     visible && (
-      <button
-        onClick={scrollToTop}
-        className="cursor-pointer fixed bottom-6 right-6 z-50 p-3 rounded-full bg-blue-500 text-white shadow-lg hover:bg-blue-600 transition-all duration-300"
-      >
-        ↑
-      </button>
+        <MainButton
+          size="arrow"
+          className="fixed bottom-25 right-6 z-50"
+          children={<div onClick={scrollToTop}>↑</div>}
+        />
     )
   );
 };

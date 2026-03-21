@@ -1,8 +1,8 @@
-import React, { useContext, useState } from "react";
-import { ContactFormContext } from "../App";
+import { useState } from "react";
+import { ContactFormData } from "../data";
+import MainButton from "./ui/MainButton";
 
 const ContactForm = () => {
-  const ContactFormData = useContext(ContactFormContext);
   const [form, setForm] = useState({});
 
   const handleChange = (e) => {
@@ -41,11 +41,11 @@ const ContactForm = () => {
               autoComplete="name"
               className="peer h-14 w-full rounded-2xl border px-4 pt-5 pb-1 text-base 
               shadow-[0_2px_8px_rgba(0,0,0,0.1)] backdrop-blur-xl
-              focus:outline-none focus:ring-2 focus:ring-purple-500
+              focus:outline-none focus:ring-2 focus:ring-sky-500
               border-white/20 bg-white/[0.08]"
             />
 
-            <span className="pointer-events-none absolute left-4 top-1/2 -translate-y-1/2 text-sm transition-all peer-focus:top-2 peer-focus:text-xs">
+            <span className="pointer-events-none absolute left-4 top-1/2 -translate-y-1/2 text-sm transition-all peer-focus:top-2 peer-focus:text-xs peer-valid:top-2 peer-valid:text-xs">
               Name *
             </span>
           </div>
@@ -63,11 +63,11 @@ const ContactForm = () => {
               autoComplete="email"
               className="peer h-14 w-full rounded-2xl border px-4 pt-5 pb-1 text-base 
               shadow-[0_2px_8px_rgba(0,0,0,0.1)] backdrop-blur-xl
-              focus:outline-none focus:ring-2 focus:ring-purple-500
+              focus:outline-none focus:ring-2 focus:ring-sky-500
               border-white/20 bg-white/[0.08]"
             />
 
-            <span className="pointer-events-none absolute left-4 top-1/2 -translate-y-1/2 text-sm transition-all peer-focus:top-2 peer-focus:text-xs">
+            <span className="pointer-events-none absolute left-4 top-1/2 -translate-y-1/2 text-sm transition-all peer-focus:top-2 peer-focus:text-xs peer-[:not(:placeholder-shown)]:top-2 peer-[:not(:placeholder-shown)]:text-xs">
               Email *
             </span>
           </div>
@@ -85,11 +85,11 @@ const ContactForm = () => {
             placeholder=" "
             className="peer h-14 w-full rounded-2xl border px-4 pt-5 pb-1 text-base 
             shadow-[0_2px_8px_rgba(0,0,0,0.1)] backdrop-blur-xl
-            focus:outline-none focus:ring-2 focus:ring-purple-500
+            focus:outline-none focus:ring-2 focus:ring-sky-500
             border-white/20 bg-white/[0.08]"
           />
 
-          <span className="pointer-events-none absolute left-4 top-1/2 -translate-y-1/2 text-sm transition-all peer-focus:top-2 peer-focus:text-xs">
+          <span className="pointer-events-none absolute left-4 top-1/2 -translate-y-1/2 text-sm transition-all peer-focus:top-2 peer-focus:text-xs peer-valid:top-2 peer-valid:text-xs">
             Subject *
           </span>
         </div>
@@ -106,11 +106,11 @@ const ContactForm = () => {
             placeholder=" "
             className="peer w-full rounded-2xl border px-4 pt-6 pb-2 text-base 
             shadow-[0_2px_8px_rgba(0,0,0,0.1)] backdrop-blur-xl resize-none
-            focus:outline-none focus:ring-2 focus:ring-purple-500
+            focus:outline-none focus:ring-2 focus:ring-sky-500
             border-white/20 bg-white/[0.08]"
           ></textarea>
 
-          <span className="pointer-events-none absolute left-4 top-3 text-sm transition-all peer-focus:text-xs">
+          <span className="pointer-events-none absolute left-4 top-3 text-sm transition-all peer-focus:text-xs peer-valid:text-xs">
             Message *
           </span>
         </div>
@@ -122,20 +122,17 @@ const ContactForm = () => {
       </label>
 
       {/* Submit */}
-      <button
-        type="submit"
-        className="w-full rounded-2xl bg-sky-500 py-4 font-semibold text-white shadow-lg hover:opacity-90 transition cursor-pointer"
+      <div onClick={handleSubmit}>
+        <MainButton
+        variant="primary"
+        size="lg"
+        className="w-full"
       >
-        Send Message
-      </button>
-
-
-      
+        {ContactFormData.buttonText}
+      </MainButton>
+      </div>
     </form>
   );
 };
 
 export default ContactForm;
-
-
-

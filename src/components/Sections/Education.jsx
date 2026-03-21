@@ -19,7 +19,7 @@ const EducationTraining = ({ data }) => {
             >
               
               {/* Type Badge */}
-              <span className="inline-block mb-3 text-xs font-semibold text-blue-600 bg-blue-100 px-3 py-1 rounded-full">
+              <span className="inline-block mb-3 text-xs font-semibold text-violet-600 bg-violet-100/30 backdrop-blur-sm px-3 py-1 rounded-full">
                 {item.type}
               </span>
 

@@ -1,15 +1,17 @@
-import Hero from "./components/Hero";
+import Hero from "./components/Sections/Hero";
 import Navbar from "./components/Navbar";
-import Education from "./components/Education";
-import About from "./components/About";
-import Skills from "./components/Skills";
-import Experience from "./components/Experience";
-import ScrollToTop from "./components/Scroll";
+import Education from "./components/Sections/Education";
+import About from "./components/Sections/About";
+import Skills from "./components/Sections/Skills";
+import Experience from "./components/Sections/Experience";
+import ScrollToTop from "./components/ScrollToTop";
 import ScrollDown from "./components/ScrollDown";
-import Projects from "./components/Projects";
-import Contact from "./components/Contact";
+import Projects from "./components/Sections/Projects";
+import Contact from "./components/Sections/Contact";
 import Footer from "./components/Footer";
-import { createContext, useState } from "react";
+import Achievements from "./components/Sections/Achievements";
+import Languages from "./components/Sections/Languages";
+import { useState } from "react";
 
 import {
   navItems,
@@ -21,11 +23,11 @@ import {
   AboutBoxItem,
   ProjectsData,
   ContactData,
-  ContactFormData,
   FooterData,
+  AchievementsItem,
+  LanguagesItem,
 } from "./data";
-const ContactFormContext = createContext(ContactFormData);
-export { ContactFormContext };
+
 function App() {
   const [isOpen, setIsOpen] = useState(false);
 
@@ -46,13 +48,13 @@ function App() {
         <Skills data={SkillsItem} />
         <Experience data={ExperienceItem} />
         <Education data={EducationTrainingData} />
+        <Achievements data={AchievementsItem} />
         <ScrollDown data={AboutBoxItem} />
         <Projects data={ProjectsData} />
-        <ContactFormContext.Provider value={ContactFormData}>
-          <Contact data={ContactData} />
-        </ContactFormContext.Provider>
+        <Languages data={LanguagesItem}  />
+        <Contact data={ContactData} />
       </main>
-      <Footer data={FooterData}/>
+      <Footer data={FooterData} />
     </>
   );
 }
