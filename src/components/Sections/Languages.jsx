@@ -22,8 +22,7 @@ const Languages = ({ data }) => {
               flex items-center gap-4
               hover:scale-105 hover:shadow-xl
               transition-all duration-300
-              cursor-default
-            "
+              cursor-default"
           >
             {/* Inner glow */}
             <div className="absolute inset-0 rounded-2xl pointer-events-none">

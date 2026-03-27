@@ -57,10 +57,6 @@ function App() {
           className="fixed inset-0 bg-white/70 backdrop-blur-md bg-opacity-50 z-50"
           onClick={() => setIsOpen(false)}
         />
-
-      //    <div className="absolute inset-0 z-0">
-      //   <div className="absolute top-0 left-0 w-full h-full bg-white/30 dark:bg-black/30 backdrop-blur-xl" />
-      // </div>
       )}
       <Navbar
         navItems={navItems}
@@ -71,7 +67,10 @@ function App() {
       />
       <ScrollToTop />
 
-      <main className=" w-screen overflow-hidden  bg-gradient-to-br from-slate-50 to-slate-100 dark:from-slate-900 dark:to-slate-800 ">
+      <main
+        className=" w-screen overflow-hidden  bg-gradient-to-br from-slate-50 to-slate-100
+             dark:from-slate-900 dark:to-slate-800 "
+      >
         <Hero data={HeroItem} />
         <About data={AboutItem} />
         <Skills data={SkillsItem} />

@@ -1,4 +1,3 @@
-import React from "react";
 import { Trophy } from "lucide-react";
 import SectionTitle from "../ui/SectionTitle";
 
@@ -20,8 +19,7 @@ const Achievements = ({ data }) => {
             backdrop-blur-xl
             border border-white/30
             shadow-[0_8px_32px_rgba(0,0,0,0.1)]
-            hover:scale-[1.03] transition-all duration-300
-            "
+            hover:scale-[1.03] transition-all duration-300"
           >
             {/* Glow */}
             <div className="absolute inset-0 rounded-2xl pointer-events-none">

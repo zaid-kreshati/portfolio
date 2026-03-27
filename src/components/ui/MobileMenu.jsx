@@ -3,6 +3,15 @@ import { X } from "lucide-react";
 import MainButton from "./MainButton";
 
 const MobileMenu = ({ isOpen, setIsOpen, navItems }) => {
+
+   const scrollToContact = () => {
+    const contactEl = document.querySelector("#contact");
+    if (contactEl) {
+      contactEl.scrollIntoView({ behavior: "smooth" });
+    }
+    setIsOpen(false)
+  };
+
   return (
     <div
       className={`fixed inset-y-0 right-0 z-70 bg-white/30 dark:bg-black/50 backdrop-blur-xl transition-transform duration-300 ease-in-out w-full max-w-sm sm:max-w-md border-l border-white/20 dark:border-white/10 shadow-2xl ${
@@ -37,11 +46,11 @@ const MobileMenu = ({ isOpen, setIsOpen, navItems }) => {
 
         {/* Bottom Button */}
         <div className="mt-auto pt-6">
-          {/* <button className="w-full rounded-full bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 font-semibold shadow-lg hover:shadow-xl transition-all duration-200">
-            Let's Talk
-          </button> */}
-
-          <MainButton fullWidth variant="blur">Let's Talk</MainButton>
+=          <div onClick={scrollToContact} className="cursor-pointer">
+            <MainButton fullWidth variant="blur">
+              Let's Talk
+            </MainButton>
+          </div>
         </div>
       </div>
     </div>

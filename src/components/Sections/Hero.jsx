@@ -5,7 +5,9 @@ const Hero = ({ data }) => {
       {/*lines*/}
       <img
         src={data.lines}
-        className="absolute top-10 left-0 h-screen w-full  max-h-screen object-contain hidden sm:block lg:flex md:hidden z-0 pointer-events-none opacity-100  dark:opacity-50"
+        className="absolute top-10 left-0 h-screen w-full 
+         max-h-screen object-contain hidden sm:block lg:flex md:hidden
+          z-0 pointer-events-none opacity-100  dark:opacity-50"
       />
 
       <div className="max-w-7xl px-20 z-0 ">
@@ -54,33 +56,32 @@ const Hero = ({ data }) => {
             <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-75 h-75 md:w-100 md:h-100 bg-gradient-to-br from-sky-300/40 to-violet-300/40 rounded-full blur-3xl z-10 pointer-events-none opacity-90" />
           </div>
 
-          {/* Image section */}
-          <div className="relative flex items-center md:-translate-y-35 md:translate-x-35  justify-center order-1 md:order-2">
+          <div
+            className="
+            relative w-full max-w-[500px] aspect-square flex items-center justify-center order-1 sm:order-2
+            md:-translate-y-20 lg:-translate-y-28 md:translate-x-0 lg:translate-x-20 xl:translate-x-25"
+          >
+            {/* Background circle */}
+            <div className="absolute inset-0 flex items-center justify-center z-10">
+              <div className="w-[80%] h-[80%] rounded-full bg-violet-200 dark:bg-white" />
+            </div>
+
+            {/* Squares decoration */}
             <img
               src={data.Squers}
-              className="absolute md:-translate-y-20 h-40 w-80 sm:h-75 sm:w-75 md:h-68 md:w-130 object-contain z-20 pointer-events-none"
+              className="absolute inset-0 w-full h-full object-contain z-20 pointer-events-none"
             />
 
             {/* Personal photo */}
             <img
               src={data.personal_photo}
-              className="relative h-65 w-65 object-contain z-20 pointer-events-none
-              sm:h-75 sm:w-75
-              md:object-inhert md:-translate-x-40 md:translate-y-20 md:h-60 md:w-70"
+              className="absolute inset-0 w-full h-full object-contain z-30 pointer-events-none"
             />
-
-            {/* coloured circle */}
-            <div className="absolute translate-y-5 md:translate-y-10 sm:translate-y-5 h-55 w-55 sm:h-60 sm:w-60 md:h-100 md:w-100 object-contain z-10 pointer-events-none bg-violet-200 rounded-full dark:bg-white"></div>
           </div>
         </div>
       </div>
 
-      {/* <img
-        src={data.Dots}
-        className="absolute top-100 h-screen w-full object-contain z-50 pointer-events-none dark:text-white  to-white"
-      /> */}
-
-      <div className="flex items-center justify-center gap-2 sm:gap-3.5 w-screen translate-y-10 sm:translate-y-15 px-4">
+      <div className="flex items-center justify-center gap-2 sm:gap-3.5 w-screen translate-y-10 sm:translate-y-7 px-4">
         <div className="flex-1 border-t-2 sm:border-t-4 border-dashed border-sky-700"></div>
 
         <span className="relative flex size-3 sm:size-4">

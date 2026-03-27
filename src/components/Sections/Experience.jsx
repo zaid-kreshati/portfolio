@@ -7,7 +7,6 @@ const Experience = ({ data }) => {
 
       <img src={data.rightDots} className="absolute top-0 right-0 hidden sm:block"  />
       {/* Title */}
-      {/* <h2 className="text-3xl font-bold text-center mb-12">{data.title}</h2> */}
       <SectionTitle data={data.titleComponent} />
 
       <div className="max-w-5xl mx-auto relative">

@@ -1,16 +1,67 @@
-# React + Vite
+# Zaid Kreshati | Full Stack Developer & Software Engineer
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A modern, responsive portfolio showcasing my expertise in building scalable web applications, robust REST APIs, and efficient database solutions using **Laravel** and **React**.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 🚀 Overview
 
-## React Compiler
+This portfolio is a reflection of my journey as a developer, highlighting my technical skills, professional experience, and the diverse range of projects I've built. From AI-powered search engines to complex management platforms, this site demonstrates my ability to deliver end-to-end solutions across the full SDLC.
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## 🛠️ Tech Stack
 
-## Expanding the ESLint configuration
+- **Frontend:** React 19, Tailwind CSS 4, Vite, Lucide Icons
+- **Backend:** Laravel, PHP, RESTful APIs
+- **Database:** MySQL, MongoDB, Redis
+- **Other:** Python, FastAPI, BERT, Scikit-learn, Git
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## ✨ Key Features
+
+- **Responsive Design:** Optimized for all screen sizes (mobile, tablet, desktop).
+- **Glassmorphism UI:** Modern, sleek interface with backdrop blurs and subtle shadows.
+- **Dark/Light Mode:** Seamlessly switch between themes for the best viewing experience.
+- **Project Showcases:** Detailed modal views for each project with GitHub links and technology breakdowns.
+- **Dynamic Content:** Easily manageable data structure for updating skills and projects.
+
+## 📁 Project Highlights
+
+- **The Community:** A scalable complaint management platform with role-based access control and dynamic priority scoring.
+- **Search Engine (Full Stack + ML):** An advanced search system implementing BM25, TF-IDF, and BERT ranking algorithms.
+- **File Management System:** A secure file-sharing platform with version control and a check-in/check-out locking system.
+- **Travelova:** A comprehensive travel booking API for managing hotels, flights, and reservations.
+
+## ⚙️ Local Development
+
+To run this project locally:
+
+1. **Clone the repository:**
+   ```bash
+   git clone https://github.com/zaid-kreshati/my-portfolio.git
+   cd my-portfolio
+   ```
+
+2. **Install dependencies:**
+   ```bash
+   npm install
+   ```
+
+3. **Start the development server:**
+   ```bash
+   npm run dev
+   ```
+
+4. **Build for production:**
+   ```bash
+   npm run build
+   ```
+
+## 📬 Contact
+
+I'm always open to discussing new projects, creative ideas, or opportunities to be part of your vision.
+
+- **GitHub:** [zaid-kreshati](https://github.com/zaid-kreshati)
+- **LinkedIn:** [Zaid Kreshati](https://www.linkedin.com/in/zaid-kreshati)
+- **Location:** Based in Jordan
+
+---
+Built with ❤️ by Zaid Kreshati

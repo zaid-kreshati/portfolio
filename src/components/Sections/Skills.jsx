@@ -4,14 +4,6 @@ import SectionTitle from "../ui/SectionTitle";
 const Skills = ({ data }) => {
   return (
     <section className="px-4 sm:px-8 md:px-12 lg:px-20 py-4 sm:py-24">
-
-      {/* Title */}
-      {/* <div className="max-w-3xl mb-12 text-center">
-        <h2 className="text-xl text-sky-500 font-bold mb-4">{data.title}</h2>
-        <p className="text-3xl font-bold mb-4">{data.description}</p>
-       
-      </div> */}
-
       <SectionTitle data={data.titleComponent} />
 
       {/* Cards */}

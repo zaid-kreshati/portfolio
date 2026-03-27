@@ -157,7 +157,7 @@ const Projects = ({ data }) => {
                           Github Repo
                         </h3>
                         <a href={selectedProject.github}>
-                          <MainButton variant="primary" size="lg">
+                          <MainButton variant="primary" size="md">
                             {data.button.name}
                             <LuCircleArrowOutUpRight
                               size={16}
