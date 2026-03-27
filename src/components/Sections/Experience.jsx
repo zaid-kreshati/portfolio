@@ -1,46 +1,47 @@
 import React from "react";
+import SectionTitle from "../ui/SectionTitle";
 
 const Experience = ({ data }) => {
   return (
-    <section className="py-16 px-6 relative ">
+    <section className="py-4 sm:py-16 px-6 relative ">
 
-      <img src={data.rightDots} className="absolute top-0 right-0"  />
+      <img src={data.rightDots} className="absolute top-0 right-0 hidden sm:block"  />
       {/* Title */}
-      <h2 className="text-3xl font-bold text-center mb-12">{data.title}</h2>
-      
+      {/* <h2 className="text-3xl font-bold text-center mb-12">{data.title}</h2> */}
+      <SectionTitle data={data.titleComponent} />
 
       <div className="max-w-5xl mx-auto relative">
-        {/* Vertical Line */}
-        <div className="absolute left-1/2 top-0 transform -translate-x-1/2 h-full border-l-2 border-dashed border-gray-300"></div>
+        {/* Vertical Line - hidden on small screens */}
+        <div className="absolute left-4 sm:left-1/2 top-0 transform sm:-translate-x-1/2 h-full border-l-2 border-dashed border-gray-300"></div>
 
         {/* Timeline Items */}
-        <div className="space-y-12 ">
+        <div className="space-y-12 pl-8 sm:pl-0">
           {data.experience.map((exp, index) => {
             const isLeft = index % 2 === 0;
 
             return (
               <div
                 key={exp.id}
-                className="relative flex items-center justify-between"
+                className="relative flex items-start sm:items-center justify-start sm:justify-between"
               >
-                {/* LEFT SIDE */}
+                {/* LEFT SIDE - full width on small screens */}
                 <div
-                  className={`w-1/2 ${
-                    isLeft ? "pr-8 text-right" : "opacity-0"
+                  className={`w-full sm:w-1/2 ${
+                    isLeft ? "sm:pr-8 sm:text-right" : "hidden sm:block sm:opacity-0"
                   }`}
                 >
                   {isLeft && (
-                    <div className="bg-white p-6 rounded-2xl shadow-md hover:shadow-lg transition">
-                      <h3 className="text-xl font-semibold text-gray-900">
+                    <div className="border border-gray-200 p-4 sm:p-6 rounded-2xl shadow-md hover:shadow-lg transition">
+                      <h3 className="text-lg sm:text-xl font-semibold ">
                         {exp.title}
                       </h3>
-                      <span className="text-sm text-sky-500 block mb-2">
+                      <span className="text-xs sm:text-sm text-sky-500 block mb-2">
                         {exp.date}
                       </span>
-                      <p className="text-gray-600 font-medium mb-2">
+                      <p className=" font-medium mb-2">
                         {exp.company}
                       </p>
-                      <p className="text-gray-700 text-sm leading-relaxed">
+                      <p className=" text-sm leading-relaxed">
                         {exp.description}
                       </p>
                     </div>
@@ -48,27 +49,25 @@ const Experience = ({ data }) => {
                 </div>
 
                 {/* CENTER DOT */}
-                
-
-                <span className="relative flex size-4">
+                <span className="-translate-x-6  flex size-4 absolute left-0 md:left-0 sm:relative sm:translate-x-0 ">
                   <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-sky-400 opacity-90"></span>
                   <span className="relative inline-flex size-4 rounded-full bg-sky-500"></span>
                 </span>
 
-                {/* RIGHT SIDE */}
-                <div className={`w-1/2 ${!isLeft ? "pl-8" : "opacity-0"}`}>
+                {/* RIGHT SIDE - full width on small screens */}
+                <div className={`w-full sm:w-1/2 ${!isLeft ? "sm:pl-8" : "hidden sm:block sm:opacity-0"}`}>
                   {!isLeft && (
-                    <div className="bg-white p-6 rounded-2xl shadow-md hover:shadow-lg transition">
-                      <h3 className="text-xl font-semibold text-gray-900">
+                    <div className="border border-gray-200 p-4 sm:p-6 rounded-2xl shadow-md hover:shadow-lg transition">
+                      <h3 className="text-lg sm:text-xl font-semibold ">
                         {exp.title}
                       </h3>
-                      <span className="text-sm text-sky-500 block mb-2">
+                      <span className="text-xs sm:text-sm text-sky-500 block mb-2">
                         {exp.date}
                       </span>
-                      <p className="text-gray-600 font-medium mb-2">
+                      <p className=" font-medium mb-2">
                         {exp.company}
                       </p>
-                      <p className="text-gray-700 text-sm leading-relaxed">
+                      <p className=" text-sm leading-relaxed">
                         {exp.description}
                       </p>
                     </div>
@@ -81,7 +80,7 @@ const Experience = ({ data }) => {
       </div>
 
       {/* Left dots at bottom-left under last experience */}
-      <img src={data.leftDots} className="absolute bottom-0 left-0" />
+      <img src={data.leftDots} className="absolute bottom-0 left-0 hidden sm:block" />
     </section>
   );
 };

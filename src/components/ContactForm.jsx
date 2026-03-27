@@ -122,15 +122,14 @@ const ContactForm = () => {
       </label>
 
       {/* Submit */}
-      <div onClick={handleSubmit}>
-        <MainButton
+      <MainButton
         variant="primary"
         size="lg"
-        className="w-full"
+        fullWidth
+        onClick={handleSubmit}
       >
         {ContactFormData.buttonText}
       </MainButton>
-      </div>
     </form>
   );
 };

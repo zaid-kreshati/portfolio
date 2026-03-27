@@ -1,17 +1,16 @@
 import React from "react";
 import { Globe } from "lucide-react";
+import SectionTitle from "../ui/SectionTitle";
 
 const Languages = ({ data }) => {
   return (
     <section className="w-full max-w-6xl mx-auto px-4 ">
       {/* Section title */}
-      <h2 className="text-3xl font-bold mb-12 text-center bg-gradient-to-r from-gray-800 to-gray-600 dark:from-gray-200 dark:to-gray-400 bg-clip-text text-transparent">
-        Languages
-      </h2>
+     <SectionTitle data={data.titleComponent} />
 
       {/* Cards container */}
       <div className="flex flex-wrap justify-center gap-6">
-        {data.map((lang, index) => (
+        {data.items.map((lang, index) => (
           <div
             key={index}
             className="

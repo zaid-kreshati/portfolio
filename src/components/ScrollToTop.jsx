@@ -27,11 +27,13 @@ const ScrollToTop = () => {
 
   return (
     visible && (
-        <MainButton
-          size="arrow"
-          className="fixed bottom-25 right-6 z-50"
-          children={<div onClick={scrollToTop}>↑</div>}
-        />
+      <MainButton
+        size="arrow"
+        className="fixed bottom-25 right-6 z-30 backdrop-blur-xs"
+        onClick={scrollToTop}
+      >
+        ↑
+      </MainButton>
     )
   );
 };

@@ -1,7 +1,6 @@
 import { FaMoon } from "react-icons/fa";
 import Squers from "./assets/images/squers.svg";
 import Lines from "./assets/images/Lines.svg";
-import Blur from "./assets/images/Blur.svg";
 import Personal_photo from "./assets/images/Personal_photo.png";
 import Circle from "./assets/images/Circle.png";
 import Dots from "./assets/images/dots.png";
@@ -18,7 +17,6 @@ import Social from "./assets/images/Projects/PostBlug.jpg";
 import Travel from "./assets/images/Projects/Travel.jpeg";
 import Home from "./assets/images/Projects/HomeService.jpeg";
 import Task from "./assets/images/Projects/TaskImage.jpeg";
-
 
 import { LuMoveUpRight } from "react-icons/lu";
 import { Mail, Phone, MapPin } from "lucide-react";
@@ -44,12 +42,11 @@ Strong background in backend architecture, clean code practices, and delivering 
 export const navItems = {
   name: "Zaid",
   sections: [
-    "Home",
-    "About me",
-    "Education",
-    "Achievements",
-    "Projects",
-    "Contact",
+    { label: "Home", id: "home" },
+    { label: "About Me", id: "about" },
+    { label: "Education", id: "education" },
+    { label: "Projects", id: "projects" },
+    { label: "Contact", id: "contact" },
   ],
   icon: <FaMoon />,
 };
@@ -61,7 +58,6 @@ export const HeroItem = {
     "focused on building reliable backend systems and modern frontend experiences using Laravel and React.",
   button: "Download CV",
   lines: Lines,
-  Blur: Blur,
   Squers: Squers,
   personal_photo: Personal_photo,
   Circle: Circle,
@@ -70,10 +66,10 @@ export const HeroItem = {
 };
 
 export const AboutItem = {
-  titleComponent:{
+  titleComponent: {
     title: "About Me",
-  subtitle: "Full Stack Developer",
-  description: "description",
+    subtitle: "Get to know me",
+    // description: "description",
   },
   icons,
   description: AboutDescription,
@@ -94,13 +90,20 @@ export const AboutItem = {
       name: "MySQL",
       value: 90,
     },
+    {
+      name: "TailwindCSS,  BootStrap",
+      value: 75,
+    },
   ],
 };
 
 export const SkillsItem = {
-  title: "Technical Skills",
-  description: "Skills & Expertise",
-  description2: "Technologies and tools I work with",
+  titleComponent: {
+    title: "Technical Skills",
+    subtitle: "Skills & Expertise",
+    description: "Technologies and tools I work with",
+  },
+
   skills: [
     {
       name: "Programming Languages:",
@@ -137,14 +140,25 @@ export const SkillsItem = {
   ],
 };
 
-export const AchievementsItem = [
-  "Solved 300+ problems on Codeforces",
-  "Participant in Damascus Collegiate Programming Contest (DCPC)",
-  "Participant in World Robot Olympiad (WRO)",
-];
+export const AchievementsItem = {
+  titleComponent: {
+    // title: "Achievements",
+    subtitle: "Achievements",
+    // description: "My personal and professional achievements",
+  },
+  items: [
+    "Solved 300+ problems on Codeforces",
+    "Participant in Damascus Collegiate Programming Contest (DCPC)",
+    "Participant in World Robot Olympiad (WRO)",
+  ],
+};
 
 export const EducationTrainingData = {
-  title: "Education & Training",
+  titleComponent: {
+    title: "Education & Training",
+    subtitle: "My Journey",
+    // description: "My educational background and training experiences",
+  },
   items: [
     {
       type: "Education",
@@ -165,7 +179,11 @@ export const EducationTrainingData = {
 };
 
 export const ExperienceItem = {
-  title: "Professional Experience",
+  titleComponent: {
+    title: "Career Journey",
+    subtitle: "Professional Experience",
+    // description: "My work history and notable projects",
+  },
   timeLine: TimeLine,
   rightDots: rightDots,
   leftDots: leftDots,
@@ -199,8 +217,11 @@ export const AboutBoxItem = {
 };
 
 export const ProjectsData = {
-  title: "portfolio ",
-  description: "My Creative Works Latest Projects",
+  titleComponent: {
+    title: "portfolio ",
+    subtitle: "Featured Projects",
+    description: "My Creative Works Latest Projects",
+  },
   button: {
     name: "view github",
     icon: <LuMoveUpRight />,
@@ -211,6 +232,7 @@ export const ProjectsData = {
       id: 1,
       name: "Athar – Community & Complaint Management System (API)",
       image: Athar,
+      date: "2025",
       technologies: [
         "Laravel",
         "MySQL",
@@ -234,11 +256,13 @@ export const ProjectsData = {
         "Enhanced performance with indexing, caching, and scalable architecture",
       ],
       github: "https://github.com/zaid-kreshati/The-Community-",
+
     },
     {
       id: 2,
       name: "Search Engine Project (Full Stack + ML)",
       image: Search,
+      date: "2025",
       technologies: [
         "Python",
         "FastAPI",
@@ -261,6 +285,7 @@ export const ProjectsData = {
       name: "File Management System (Full Stack)",
       image: File,
       technologies: ["Laravel", "MySQL", "Blade", "Bootstrap"],
+      date: "2024",
       description: [
         "Developed secure file-sharing system with version control",
         "Implemented check-in/check-out locking system",
@@ -272,6 +297,7 @@ export const ProjectsData = {
       id: 4,
       name: "Social Media Blog Platform (Full Stack)",
       image: Social,
+      date: "2024",
       technologies: [
         "Laravel",
         "MySQL",
@@ -290,6 +316,7 @@ export const ProjectsData = {
       id: 5,
       name: "Travelova – Travel Booking System (API)",
       image: Travel,
+      date: "2023",
       technologies: ["Laravel", "MySQL", "REST API", "Laravel Passport"],
       description: [
         "Developed backend for travel booking system",
@@ -301,6 +328,7 @@ export const ProjectsData = {
     {
       id: 6,
       name: "Task Management System",
+      date: "2023",
       image: Task,
       technologies: ["Laravel", "Stripe", "Queue"],
       highlights: [
@@ -316,6 +344,7 @@ export const ProjectsData = {
     {
       id: 7,
       name: "Homy Home (API)",
+      date: "2023",
       image: Home,
       technologies: ["Laravel", "Firebase"],
       highlights: ["Real-time notifications", "Booking & rating system"],
@@ -328,14 +357,22 @@ export const ProjectsData = {
   ],
 };
 
-export const LanguagesItem = [
-  { name: "Arabic", level: "Native" },
-  { name: "English", level: "Excellent" },
-];
+export const LanguagesItem = {
+  titleComponent: {
+    // title: "Languages",
+    subtitle: "Languages",
+  },
+  items: [
+    { name: "Arabic", level: "Native" },
+    { name: "English", level: "Excellent" },
+  ],
+};
 
 export const ContactData = {
-  title: "Contact ",
-  description: "Let’s Discuss Your Project",
+  titleComponent: {
+    title: "Get In Touch",
+    subtitle: "Contact",
+  },
   contacts: [
     {
       id: 1,

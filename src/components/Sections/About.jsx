@@ -2,27 +2,27 @@ import SectionTitle from "../ui/SectionTitle";
 
 const About = ({ data }) => {
   return (
-    <section className="pt-60 flex items-center gap-16 px-20">
+    <section className="flex flex-col py-7.5 md:flex-row items-center gap-8 md:gap-16 px-4 sm:px-10 md:px-20" id="about">
 
       {/* Icons */}
-      <div className="flex-1">
+      <div className="w-full order-3 md:w-auto md:flex-1">
         <img
           src={data.icons}
           alt="technology icons"
-          className="w-2/3"
+          className="w-full md:translate-y-[85px] bg-gradient-to-b from-sky-500 to-violet-400"
         />
       </div>
 
       {/* Content */}
-      <div className="flex-1">
+      <div className="w-full md:w-auto md:flex-1">
         <SectionTitle data={data.titleComponent}></SectionTitle>
 
-        <p className="mb-8 text-gray-600 leading-relaxed">
+        <p className="mb-6 md:mb-8 leading-relaxed">
           {data.description}
         </p>
 
         {/* Skills */}
-        <div className="space-y-2 max-w-md">
+        <div className="space-y-2 max-w-full md:max-w-md">
           {data.languages?.map((item, index) => (
             <div key={item.name || index} className="relative">
 

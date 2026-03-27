@@ -4,38 +4,29 @@ import MainButton from "./ui/MainButton";
 const Footer = ({ data }) => {
   return (
     <>
-    <div
-        className="left-0 border-t-2 border-solid mx-10   border-gray-300"
-      ></div>
-    <div className="flex justify-between items-center gap-1 mx-10 h-20 ">
-      <p className="text-sm text-gray-500">{data.copyright}</p>
-      <p className="text-l text-bold text-black-500">{data.developmentBy}</p>
-      <div className="flex">
-        {data.socialMedia.map((item) => (
-          <a
-            key={item.id}
-            href={item.url}
-            target="_blank"
-            rel="noopener noreferrer"
-
-          >
-            {/* <div
-              className=" relative flex m-2 h-10 w-10 items-center justify-center rounded-2xl bg-sky-600   border-2 border-sky-300 overflow-hidden  cursor-pointer 
-                  transition-transform duration-300 hover:scale-125"
+      <div className="left-0 border-t-2 border-solid mx-4 md:mx-10 border-gray-300"></div>
+      <div className="flex flex-col md:flex-row justify-between items-center gap-4 md:gap-1 mx-4 md:mx-10 py-4 md:h-20">
+        <p className="text-xs md:text-sm text-gray-500 text-center md:text-left">
+          {data.copyright}
+        </p>
+        <p className="text-sm md:text-base font-bold text-black text-center md:text-left">
+          {data.developmentBy}
+        </p>
+        <div className="flex flex-wrap justify-center gap-2">
+          {data.socialMedia.map((item) => (
+            <a
+              key={item.id}
+              href={item.url}
+              target="_blank"
+              rel="noopener noreferrer"
             >
-              {item.icon}
-            </div> */}
-
-            <MainButton 
-            variant="icon"
-            size="sm"
-            children={item.icon}
-            />
-            {/* <span>{item.name}</span> */}
-          </a>
-        ))}
+              <MainButton variant="icon" size="sm">
+                {item.icon}
+              </MainButton>
+            </a>
+          ))}
+        </div>
       </div>
-    </div>
     </>
   );
 };
