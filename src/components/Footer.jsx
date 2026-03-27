@@ -9,7 +9,7 @@ const Footer = ({ data }) => {
         <p className="text-xs md:text-sm text-gray-500 text-center md:text-left">
           {data.copyright}
         </p>
-        <p className="text-sm md:text-base font-bold text-black text-center md:text-left">
+        <p className="text-sm md:text-base font-bold  text-center md:text-left">
           {data.developmentBy}
         </p>
         <div className="flex flex-wrap justify-center gap-2">

@@ -187,7 +187,7 @@ export const ExperienceItem = {
   timeLine: TimeLine,
   rightDots: rightDots,
   leftDots: leftDots,
-  length: 2,
+  length: 3,
   experience: [
     {
       id: 1,
@@ -199,11 +199,19 @@ export const ExperienceItem = {
     },
     {
       id: 2,
-      title: "Teaching Assistant",
-      company: "Damascus University – Faculty of Informatics",
-      date: "Oct 2025 – Present",
+      title: "Internship Trainee",
+      company: "BeeDelivery Private Joint Stock Company",
+      date: "August 14, 2024 – December 5, 2024",
       description:
-        "Assist in teaching programming courses and support students during lab sessions by debugging code and explaining core concepts. Apply and reinforce advanced Java OOP and clean code practices while developing mentoring and communication skills.",
+        "Completed a 4-month intensive training program focused on backend and web development. Hands-on experience in Laravel, RESTful APIs, JavaScript & jQuery, and MySQL. Completed two projects: a post blog system and a task management application.",
+    },
+    {
+      id: 3,
+      title: "Competitive Programming Contestant",
+      company: "ICPC",
+      date: "2021",
+      description:
+        "Competed in the International Collegiate Programming Contest (ICPC), one of the most prestigious programming competitions worldwide. Participated in 4 contests, solving complex algorithmic problems under time pressure. Achievements: 500+ problems solved, best rank 16/31, 4x contests. Strong skills in C++, algorithms, data structures, problem solving, and mathematics.",
     },
   ],
 };
