@@ -3,6 +3,9 @@ import { Menu } from "lucide-react";
 import MobileMenu from "./ui/MobileMenu";
 import { Sun, Moon } from "lucide-react";
 import useActiveSection from "../hooks/useActiveSection";
+import nameIcon from "../../public/favicon.svg"
+import name2Icon from "../../public/ZK_favicon.png"
+
 
 const Navbar = ({ navItems, isOpen, setIsOpen, darkMode, setDarkMode }) => {
   const active = useActiveSection(navItems);
@@ -31,7 +34,12 @@ const Navbar = ({ navItems, isOpen, setIsOpen, darkMode, setDarkMode }) => {
         border-white/30 dark:border-white/10 shadow-[0_8px_32px_rgba(0,0,0,0.1)]"
       >
         {/* Left */}
-        <h1 className="text-sm sm:text-base md:text-lg lg:text-xl">{navItems.name}</h1>
+        {/* <h1 className="text-sm sm:text-base md:text-lg lg:text-xl">{navItems.name}</h1>
+        <img src={nameIcon} className="w-8 h-8 object-cover" alt="" />
+        <img src={name2Icon} className="w-8 h-8 object-cover" alt="" /> */}
+
+        <span class="bg-gradient-to-l from-sky-500 via-sky-600 to-sky-800 bg-clip-text text-transparent text-2xl">ZK</span>
+
 
         {/* Desktop Menu */}
         <div className="hidden md:flex gap-4 lg:gap-6">

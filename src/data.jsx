@@ -5,7 +5,7 @@ import Personal_photo from "./assets/images/Personal_photo.png";
 import Circle from "./assets/images/Circle.png";
 import Dots from "./assets/images/dots.png";
 import icons from "./assets/images/icons2.png";
-import CV from "./assets/CV.pdf";
+import CV from "./assets/zaid_kreshati_CV.pdf";
 import TimeLine from "./assets/images/TimeLine.svg";
 import rightDots from "./assets/images/rightDots.svg";
 import leftDots from "./assets/images/leftDots.svg";
