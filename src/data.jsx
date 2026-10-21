@@ -17,6 +17,8 @@ import Social from "./assets/images/Projects/PostBlug.jpg";
 import Travel from "./assets/images/Projects/Travel.jpeg";
 import Home from "./assets/images/Projects/HomeService.jpeg";
 import Task from "./assets/images/Projects/TaskImage.jpeg";
+import VicaFrontendTraining from "./assets/images/Certificate/vica-frontend-training.jpeg";
+import CourseraLaravelProtections from "./assets/images/Certificate/coursera-laravel-protections.pdf";
 
 import { LuMoveUpRight } from "react-icons/lu";
 import { Mail, Phone, MapPin } from "lucide-react";
@@ -44,8 +46,10 @@ export const navItems = {
   sections: [
     { label: "Home", id: "home" },
     { label: "About Me", id: "about" },
+    { label: "Work Experience", id: "experience" },
     { label: "Education", id: "education" },
     { label: "Projects", id: "projects" },
+    { label: "Certifications", id: "certifications" },
     { label: "Contact", id: "contact" },
   ],
   icon: <FaMoon />,
@@ -180,17 +184,37 @@ export const EducationTrainingData = {
 
 export const ExperienceItem = {
   titleComponent: {
-    title: "Career Journey",
+    title: "Work Experience",
     subtitle: "Professional Experience",
-    // description: "My work history and notable projects",
+    description: "Roles focused on software engineering, systems, and continuous learning.",
   },
   timeLine: TimeLine,
   rightDots: rightDots,
   leftDots: leftDots,
-  length: 3,
+  length: 4,
   experience: [
     {
       id: 1,
+      title: "Software Engineer (Full Stack Developer)",
+      company: "AYA Internet Service Provider",
+      employmentType: "Full-time",
+      date: "April 2026 – August 2026",
+      duration: "5 months",
+      location: "Damascus Governorate, Syria",
+      arrangement: "On-site",
+      summary:
+        "Developed and maintained full-stack systems supporting the company's internet services.",
+      responsibilities: [
+        "Developed and maintained full-stack systems supporting the company's internet services.",
+        "Worked on backend development using PHP Laravel and CodeIgniter.",
+        "Developed and maintained web interfaces and internal administrative dashboards.",
+        "Worked with MySQL databases, writing and optimizing SQL queries.",
+        "Debugged and improved legacy code while maintaining compatibility with existing production systems.",
+        "Used Git and GitLab for version control and collaboration within the development workflow.",
+      ],
+    },
+    {
+      id: 2,
       title: "Teaching Assistant",
       company: "Damascus University – Faculty of Informatics",
       date: "Oct 2025 – Present",
@@ -198,7 +222,7 @@ export const ExperienceItem = {
         "Assist in teaching programming courses and support students during lab sessions by debugging code and explaining core concepts. Apply and reinforce advanced Java OOP and clean code practices while developing mentoring and communication skills.",
     },
     {
-      id: 2,
+      id: 3,
       title: "Internship Trainee",
       company: "BeeDelivery Private Joint Stock Company",
       date: "August 14, 2024 – December 5, 2024",
@@ -206,7 +230,7 @@ export const ExperienceItem = {
         "Completed a 4-month intensive training program focused on backend and web development. Hands-on experience in Laravel, RESTful APIs, JavaScript & jQuery, and MySQL. Completed two projects: a post blog system and a task management application.",
     },
     {
-      id: 3,
+      id: 4,
       title: "Competitive Programming Contestant",
       company: "ICPC",
       date: "2021",
@@ -373,6 +397,39 @@ export const LanguagesItem = {
   items: [
     { name: "Arabic", level: "Native" },
     { name: "English", level: "Excellent" },
+  ],
+};
+
+export const CertificationsData = {
+  titleComponent: {
+    title: "Professional development",
+    subtitle: "Certifications & Learning",
+    description:
+      "Credentials that reflect my ongoing commitment to building secure, high-quality software.",
+  },
+  certificates: [
+    {
+      id: "vica-frontend-training",
+      title: "Frontend Development LV2 Training",
+      issuer: "Vica Web Solutions",
+      period: "December 1, 2025 – January 30, 2026",
+      details: ["40 hours", "Score: 92/100", "Evaluation: Excellent"],
+      image: VicaFrontendTraining,
+      imageType: "image",
+      alt: "Frontend Development LV2 Training certificate issued by Vica Web Solutions",
+      url: "https://vica.website/training/trainees/860508",
+    },
+    {
+      id: "coursera-laravel-protections",
+      title: "Laravel Protections",
+      issuer: "Coursera",
+      authorizedBy: "Course authorized by Infosec",
+      period: "March 7, 2026",
+      image: CourseraLaravelProtections,
+      imageType: "pdf",
+      alt: "Laravel Protections certificate from Coursera, authorized by Infosec",
+      url: "https://coursera.org/share/4a09ccda2fe516f3e42dd6c74e6b8c86",
+    },
   ],
 };
 

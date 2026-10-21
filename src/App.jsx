@@ -7,6 +7,7 @@ import Experience from "./components/Sections/Experience";
 import ScrollToTop from "./components/ScrollToTop";
 import ScrollDown from "./components/ScrollDown";
 import Projects from "./components/Sections/Projects";
+import Certifications from "./components/Sections/Certifications";
 import Contact from "./components/Sections/Contact";
 import Footer from "./components/Footer";
 import Achievements from "./components/Sections/Achievements";
@@ -22,6 +23,7 @@ import {
   EducationTrainingData,
   AboutBoxItem,
   ProjectsData,
+  CertificationsData,
   ContactData,
   FooterData,
   AchievementsItem,
@@ -79,6 +81,7 @@ function App() {
         <Achievements data={AchievementsItem} />
         <ScrollDown data={AboutBoxItem} />
         <Projects data={ProjectsData} />
+        <Certifications data={CertificationsData} />
         <Languages data={LanguagesItem} />
         <Contact data={ContactData} />
         <Footer data={FooterData} />

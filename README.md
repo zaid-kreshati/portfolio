@@ -61,7 +61,7 @@ I'm always open to discussing new projects, creative ideas, or opportunities to 
 
 - **GitHub:** [zaid-kreshati](https://github.com/zaid-kreshati)
 - **LinkedIn:** [Zaid Kreshati](https://www.linkedin.com/in/zaid-kreshati)
-- **Location:** Based in Jordan
+- **Location:** Based in Damascus
 
 ---
 Built with ❤️ by Zaid Kreshati
