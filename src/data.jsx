@@ -17,6 +17,9 @@ import Social from "./assets/images/Projects/PostBlug.jpg";
 import Travel from "./assets/images/Projects/Travel.jpeg";
 import Home from "./assets/images/Projects/HomeService.jpeg";
 import Task from "./assets/images/Projects/TaskImage.jpeg";
+import WardAlSham from "./assets/images/Projects/WardAlSham.jpg";
+import CompanyMail from "./assets/images/Projects/CompanyMail.jpg";
+import ECI from "./assets/images/Projects/ECI.jpg";
 import VicaFrontendTraining from "./assets/images/Certificate/vica-frontend-training.jpeg";
 import CourseraLaravelProtections from "./assets/images/Certificate/coursera-laravel-protections.pdf";
 
@@ -260,6 +263,48 @@ export const ProjectsData = {
     url: "https://github.com/zaid-kreshati",
   },
   projects: [
+    {
+      id: 8,
+      name: "Ward Al Sham – Restaurant Website",
+      image: WardAlSham,
+      date: "2026",
+      technologies: ["Next.js", "Tailwind CSS", "TypeScript", "Cloudflare"],
+      highlights: ["Live at wardalshamrestaurant.com", "Arabic / English with dark mode"],
+      description: [
+        "Built and launched the website for a Damascene restaurant in Cairo",
+        "Bilingual Arabic (RTL) / English site with a light/dark theme and phone-first layout",
+        "Statically exported and deployed on Cloudflare",
+      ],
+      github: "https://github.com/zaid-kreshati/Ward-al-sham",
+    },
+    {
+      id: 9,
+      name: "Internal Company Mail System (Frontend)",
+      image: CompanyMail,
+      date: "2026",
+      technologies: ["Next.js 15", "Tailwind CSS v4", "Framer Motion"],
+      highlights: ["Full mail client + admin panel", "Company files library"],
+      description: [
+        "Built an internal mail client: compose with CC/BCC, reply, forward, threads, folders and attachments",
+        "Added an admin area for employees, departments, security logs and IP policy",
+        "Arabic/English (RTL/LTR), dark mode, real-time notification simulation",
+      ],
+      github: "https://github.com/zaid-kreshati/Internal-Company-Mail-System",
+    },
+    {
+      id: 10,
+      name: "ECI Cement – Corporate Website",
+      image: ECI,
+      date: "2026",
+      technologies: ["React", "TypeScript", "Vite", "Tailwind CSS v4", "React Router"],
+      highlights: ["Bilingual Arabic / English", "Multi-page corporate site"],
+      description: [
+        "Built a corporate website for a cement manufacturer from design references",
+        "Pages for products & services, factories, projects, quality, news and quotation requests",
+        "Bilingual Arabic/English with RTL support",
+      ],
+      github: "https://github.com/zaid-kreshati/eci-website",
+    },
     {
       id: 1,
       name: "Athar – Community & Complaint Management System (API)",
