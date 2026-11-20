@@ -1,18 +1,21 @@
 import { useEffect, useState } from "react";
 import { Award, CalendarDays, Clock3, ExternalLink, X } from "lucide-react";
 import SectionTitle from "../ui/SectionTitle";
+import Reveal from "../ui/Reveal";
 
 const CertificatePreview = ({ certificate, className = "" }) =>
   certificate.imageType === "pdf" ? (
     <iframe
       src={`${certificate.image}#view=FitH&toolbar=0&navpanes=0`}
       title={certificate.alt}
+      loading="lazy"
       className={`pointer-events-none h-full w-full border-0 ${className}`}
     />
   ) : (
     <img
       src={certificate.image}
       alt={certificate.alt}
+      loading="lazy"
       className={`h-full w-full object-contain ${className}`}
     />
   );
@@ -31,7 +34,7 @@ const Certifications = ({ data }) => {
     window.addEventListener("keydown", closeOnEscape);
 
     return () => {
-      document.body.style.overflow = "auto";
+      document.body.style.overflow = "";
       window.removeEventListener("keydown", closeOnEscape);
     };
   }, [selectedCertificate]);
@@ -42,9 +45,11 @@ const Certifications = ({ data }) => {
         <SectionTitle data={data.titleComponent} />
 
         <div className="grid grid-cols-1 gap-6 md:grid-cols-2 sm:gap-8">
-          {data.certificates.map((certificate) => (
-            <article
+          {data.certificates.map((certificate, index) => (
+            <Reveal
+              as="article"
               key={certificate.id}
+              delay={index * 100}
               className="group overflow-hidden rounded-2xl border border-white/30 bg-white/30 shadow-[0_8px_32px_rgba(0,0,0,0.1)] transition-all duration-300 hover:-translate-y-1 hover:shadow-xl dark:border-gray-700 dark:bg-gray-900/40 dark:shadow-[0_8px_32px_rgba(0,0,0,0.4)]"
             >
               <button
@@ -110,7 +115,7 @@ const Certifications = ({ data }) => {
                   View Certificate <ExternalLink size={16} aria-hidden="true" />
                 </a>
               </div>
-            </article>
+            </Reveal>
           ))}
         </div>
       </div>

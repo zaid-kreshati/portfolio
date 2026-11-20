@@ -1,25 +1,25 @@
 import { FaMoon } from "react-icons/fa";
 import Squers from "./assets/images/squers.svg";
 import Lines from "./assets/images/Lines.svg";
-import Personal_photo from "./assets/images/Personal_photo.png";
+import Personal_photo from "./assets/images/personal_photo.webp";
 import Circle from "./assets/images/Circle.png";
 import Dots from "./assets/images/dots.png";
-import icons from "./assets/images/icons2.png";
+import icons from "./assets/images/icons2.webp";
 import CV from "./assets/zaid_kreshati_CV.pdf";
 import TimeLine from "./assets/images/TimeLine.svg";
 import rightDots from "./assets/images/rightDots.svg";
 import leftDots from "./assets/images/leftDots.svg";
 import AboutBox from "./assets/images/AboutBox.png";
-import Athar from "./assets/images/Projects/Athar.jpg";
+import Athar from "./assets/images/Projects/Athar.webp";
 import Search from "./assets/images/Projects/search_engines.webp";
-import File from "./assets/images/Projects/FileManagement.jpg";
-import Social from "./assets/images/Projects/PostBlug.jpg";
+import File from "./assets/images/Projects/FileManagement.webp";
+import Social from "./assets/images/Projects/PostBlug.webp";
 import Travel from "./assets/images/Projects/Travel.jpeg";
 import Home from "./assets/images/Projects/HomeService.jpeg";
 import Task from "./assets/images/Projects/TaskImage.jpeg";
-import WardAlSham from "./assets/images/Projects/WardAlSham.jpg";
-import CompanyMail from "./assets/images/Projects/CompanyMail.jpg";
-import ECI from "./assets/images/Projects/ECI.jpg";
+import WardAlSham from "./assets/images/Projects/WardAlSham.webp";
+import CompanyMail from "./assets/images/Projects/CompanyMail.webp";
+import ECI from "./assets/images/Projects/ECI.webp";
 import VicaFrontendTraining from "./assets/images/Certificate/vica-frontend-training.jpeg";
 import CourseraLaravelProtections from "./assets/images/Certificate/coursera-laravel-protections.pdf";
 
@@ -37,13 +37,11 @@ import {
   FiDatabase,
   FiLayers,
   FiTool,
+  FiCloud,
 } from "react-icons/fi";
 
-export const AboutDescription = `
-Solution-oriented Full Stack Developer and Software Engineer specializing in Laravel and React.
-Experienced in building scalable systems, robust REST APIs, and efficient database solutions.
-Strong background in backend architecture, clean code practices, and delivering end-to-end projects across the SDLC.
-`;
+export const AboutDescription =
+  "Full Stack Developer specializing in Laravel and React, experienced in building scalable REST APIs and modern responsive web applications. Strong background in backend architecture, database optimization, clean code, and deploying web applications to production environments.";
 export const navItems = {
   name: "Zaid",
   sections: [
@@ -64,6 +62,7 @@ export const HeroItem = {
   description:
     "focused on building reliable backend systems and modern frontend experiences using Laravel and React.",
   button: "Download CV",
+  badge: "Open to work · 3 live production websites",
   lines: Lines,
   Squers: Squers,
   personal_photo: Personal_photo,
@@ -113,36 +112,41 @@ export const SkillsItem = {
 
   skills: [
     {
-      name: "Programming Languages:",
+      name: "Programming Languages",
       icon: <FiCode />,
-      value: "PHP, JavaScript, Java, C++, HTML5, CSS",
+      value: "PHP, JavaScript, Java, C++, HTML5, CSS, Python",
     },
     {
-      name: "Front-end Development:",
+      name: "Front-end Development",
       icon: <FiLayout />,
       value: "React, TailwindCSS, Responsive UI Development",
     },
     {
-      name: "Back-end Development:",
+      name: "Back-end Development",
       icon: <FiServer />,
       value: "Laravel, RESTful APIs",
     },
     {
-      name: "Databases:",
+      name: "Databases",
       icon: <FiDatabase />,
       value: "MySQL, MongoDB",
     },
     {
-      name: "Architecture:",
+      name: "Architecture",
       icon: <FiLayers />,
       value:
         "MVC, 3-Tier Architecture, Service & Repository Pattern, SOLID Principles, Clean Code",
     },
     {
-      name: "Tools & Platforms:",
+      name: "Tools & Platforms",
       icon: <FiTool />,
       value:
         "Git, GitHub, Redis, Stripe, Firebase, Cloudinary, Google Cloud, DigitalOcean",
+    },
+    {
+      name: "Deployment & Hosting",
+      icon: <FiCloud />,
+      value: "Cloudflare Workers, Vercel, GitHub Pages",
     },
   ],
 };
@@ -154,9 +158,9 @@ export const AchievementsItem = {
     // description: "My personal and professional achievements",
   },
   items: [
-    "Solved 300+ problems on Codeforces",
-    "Participant in Damascus Collegiate Programming Contest (DCPC)",
-    "Participant in World Robot Olympiad (WRO)",
+    { text: "Solved 300+ programming problems on Codeforces", url: "https://codeforces.com/profile/zaid_kr" },
+    { text: "Attended specialized training for the Damascus Collegiate Programming Contest (DCPC)" },
+    { text: "Attended training for the World Robot Olympiad (WRO)" },
   ],
 };
 
@@ -220,7 +224,7 @@ export const ExperienceItem = {
       id: 2,
       title: "Teaching Assistant",
       company: "Damascus University – Faculty of Informatics",
-      date: "Oct 2025 – Present",
+      date: "2025 – 2026",
       description:
         "Assist in teaching programming courses and support students during lab sessions by debugging code and explaining core concepts. Apply and reinforce advanced Java OOP and clean code practices while developing mentoring and communication skills.",
     },
@@ -265,21 +269,21 @@ export const ProjectsData = {
   projects: [
     {
       id: 8,
-      name: "Ward Al Sham – Restaurant Website",
+      name: "Ward Al Sham – Restaurant Website (Live)",
       image: WardAlSham,
       date: "2026",
       technologies: ["Next.js", "Tailwind CSS", "TypeScript", "Cloudflare"],
-      highlights: ["Live at wardalshamrestaurant.com", "Arabic / English with dark mode"],
+      highlights: ["Arabic / English with dark mode"],
       description: [
         "Built and launched the website for a Damascene restaurant in Cairo",
         "Bilingual Arabic (RTL) / English site with a light/dark theme and phone-first layout",
         "Statically exported and deployed on Cloudflare",
       ],
-      github: "https://github.com/zaid-kreshati/Ward-al-sham",
+      live: "https://wardalshamrestaurant.com/",
     },
     {
       id: 9,
-      name: "Internal Company Mail System (Frontend)",
+      name: "Internal Company Mail System (Live)",
       image: CompanyMail,
       date: "2026",
       technologies: ["Next.js 15", "Tailwind CSS v4", "Framer Motion"],
@@ -289,11 +293,11 @@ export const ProjectsData = {
         "Added an admin area for employees, departments, security logs and IP policy",
         "Arabic/English (RTL/LTR), dark mode, real-time notification simulation",
       ],
-      github: "https://github.com/zaid-kreshati/Internal-Company-Mail-System",
+      live: "https://internal-company-mail-system.vercel.app/",
     },
     {
       id: 10,
-      name: "ECI Cement – Corporate Website",
+      name: "ECI Cement – Corporate Website (Live)",
       image: ECI,
       date: "2026",
       technologies: ["React", "TypeScript", "Vite", "Tailwind CSS v4", "React Router"],
@@ -304,6 +308,7 @@ export const ProjectsData = {
         "Bilingual Arabic/English with RTL support",
       ],
       github: "https://github.com/zaid-kreshati/eci-website",
+      live: "https://eci-website.zaid-kreshati.workers.dev/",
     },
     {
       id: 1,
@@ -355,7 +360,7 @@ export const ProjectsData = {
         "Processed large datasets with embeddings and query expansion",
         "Achieved 70.1% MAP score on BEIR-Quora benchmark",
       ],
-      github: "https://github.com/zaid-kreshati/Search-engine",
+      github: "https://github.com/zaid-kreshati/IR-project",
     },
     {
       id: 3,
@@ -368,7 +373,7 @@ export const ProjectsData = {
         "Implemented check-in/check-out locking system",
         "Optimized performance with caching and pagination",
       ],
-      github: "https://github.com/zaid-kreshati/File-management",
+      github: "https://github.com/zaid-kreshati/file-management",
     },
     {
       id: 4,
@@ -387,7 +392,7 @@ export const ProjectsData = {
         "Added tagging, nested comments, and Redis caching",
         "Implemented admin analytics dashboard",
       ],
-      github: "https://github.com/zaid-kreshati/Post-blog",
+      github: "https://github.com/zaid-kreshati/postBlog",
     },
     {
       id: 5,
@@ -488,7 +493,8 @@ export const ContactData = {
       id: 1,
       name: "Phone",
       icon: <Icon Icon={Phone}></Icon>,
-      value: "+963 934 226 600",
+      value: "+20 122 221 7472",
+      href: "tel:+201222217472",
     },
 
     {
@@ -496,54 +502,25 @@ export const ContactData = {
       name: "Email",
       icon: <Icon Icon={Mail}></Icon>,
       value: "zed.kreshati.2001@gmail.com",
+      href: "mailto:zed.kreshati.2001@gmail.com",
     },
 
     {
       id: 3,
       name: "Location",
       icon: <Icon Icon={MapPin}></Icon>,
-      value: "Damascus, Syria",
+      value: "Cairo, Egypt",
     },
   ],
 };
 
 export const ContactFormData = {
-  title: "Contact Me",
-  fields: [
-    {
-      name: "name",
-      type: "text",
-      placeholder: "Full Name",
-      required: true,
-      size: "medium",
-    },
-    {
-      name: "email",
-      type: "email",
-      placeholder: "Email Address",
-      required: true,
-      size: "medium",
-    },
-    {
-      name: "phone",
-      type: "tel",
-      placeholder: "Phone Number",
-      required: false,
-      size: "large",
-    },
-    {
-      name: "message",
-      type: "textarea",
-      placeholder: "Your Message...",
-      required: true,
-      size: "large",
-    },
-  ],
+  recipient: "zed.kreshati.2001@gmail.com",
   buttonText: "Send Message",
 };
 
 export const FooterData = {
-  copyright: "@ 2026. All Rights Reserved",
+  copyright: `© ${new Date().getFullYear()} Zaid Kreshati. All rights reserved.`,
   developmentBy: "Zaid Kreshati",
   socialMedia: [
     {

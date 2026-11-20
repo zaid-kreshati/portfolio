@@ -1,50 +1,45 @@
-import React from "react";
 import ContactForm from "../ContactForm";
-import MainButton from "../ui/MainButton";
 import SectionTitle from "../ui/SectionTitle";
+import Reveal from "../ui/Reveal";
+
 const Contact = ({ data }) => {
   return (
-    <section id="contact">
-      {/* Title */}
-      <div className="max-w-7xl mx-auto px-6 md:px-20 text-center">
-        <div className="text-left">
-          <SectionTitle data={data.titleComponent} />
-        </div>
+    <section id="contact" className="pb-12">
+      <div className="max-w-7xl mx-auto px-6 md:px-20">
+        <SectionTitle data={data.titleComponent} />
 
-        {/* Contact Card - Responsive Layout */}
-        <div className="flex flex-col lg:flex-row gap-12 lg:gap-32 w-full rounded-2xl py-8">
-          {/* Form first on mobile (top) and desktop (left) */}
-          <div className="w-full lg:w-3/5 order-2">
+        <div className="flex flex-col lg:flex-row gap-12 lg:gap-24 w-full py-4">
+          <Reveal direction="right" className="w-full lg:w-3/5 order-2">
             <ContactForm />
-          </div>
+          </Reveal>
 
-          {/* Contacts Column - Row on mobile, Column on desktop */}
-          <div className="w-full lg:w-2/5 order-1 flex flex-row lg:flex-col gap-3 lg:gap-15  lg:justify-start flex-wrap lg:flex-nowrap">
-            {data.contacts.map((contact) => (
-              <div
-                className="flex  items-center   gap-2 sm:gap-4 "
-                key={contact.id}
-              >
-                <MainButton
-                  variant="contact"
-                  size="sq"
-                  className="bg-sky-600 text-white shadow-lg hover:bg-sky-500 hover:opacity-90 hover:scale-110 transition-all duration-300 backdrop-blur-lg"
-                >
-                  {contact.icon}
-                </MainButton>
-
-                <div className="flex flex-col text-left">
-                  <span className="text-sm sm:text-base font-medium break-all">
-                    {contact.name}
-                  </span>
-
-                  <span className="text-sm sm:text-base font-medium break-all">
-                    {contact.value}
-                  </span>
-                </div>
-              </div>
-            ))}
-          </div>
+          <Reveal
+            as="ul"
+            direction="left"
+            className="w-full lg:w-2/5 order-1 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-1 gap-5 lg:gap-10 content-start"
+          >
+            {data.contacts.map((contact) => {
+              const Wrapper = contact.href ? "a" : "div";
+              return (
+                <li key={contact.id}>
+                  <Wrapper
+                    {...(contact.href && { href: contact.href })}
+                    className="group flex items-center gap-4 rounded-2xl p-1 focus-visible:outline-2 focus-visible:outline-sky-500"
+                  >
+                    <span className="shrink-0 rounded-2xl bg-sky-600 dark:bg-sky-500 border-2 border-sky-300 dark:border-sky-400 p-3 sm:p-4 shadow-lg transition-transform duration-300 group-hover:scale-110 group-hover:-rotate-6">
+                      {contact.icon}
+                    </span>
+                    <span className="flex flex-col text-left min-w-0">
+                      <span className="text-sm text-slate-500 dark:text-slate-400">{contact.name}</span>
+                      <span className="text-sm sm:text-base font-medium break-all group-hover:text-sky-600 dark:group-hover:text-sky-400 transition-colors">
+                        {contact.value}
+                      </span>
+                    </span>
+                  </Wrapper>
+                </li>
+              );
+            })}
+          </Reveal>
         </div>
       </div>
     </section>

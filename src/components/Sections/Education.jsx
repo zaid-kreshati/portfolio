@@ -1,5 +1,5 @@
-import React from "react";
 import SectionTitle from "../ui/SectionTitle";
+import Reveal from "../ui/Reveal";
 
 const EducationTraining = ({ data }) => {
   return (
@@ -12,14 +12,14 @@ const EducationTraining = ({ data }) => {
         {/* Items */}
         <div className="space-y-6 sm:space-y-8">
           {data.items.map((item, index) => (
-            <div
-              key={index}
-              className="border border-gray-200 rounded-2xl p-4 sm:p-6 shadow-sm hover:shadow-md transition"
-              
+            <Reveal
+              key={item.title}
+              delay={index * 100}
+              className="border border-gray-200 dark:border-gray-700 bg-white/40 dark:bg-gray-900/30 rounded-2xl p-4 sm:p-6 shadow-sm hover:shadow-md transition-shadow"
             >
               
               {/* Type Badge */}
-              <span className="inline-block mb-3 text-xs font-semibold text-violet-600 bg-violet-100/30 dark:bg-white backdrop-blur-sm px-3 py-1 rounded-full">
+              <span className="inline-block mb-3 text-xs font-semibold text-violet-700 bg-violet-500/10 dark:text-violet-300 backdrop-blur-sm px-3 py-1 rounded-full">
                 {item.type}
               </span>
 
@@ -61,7 +61,7 @@ const EducationTraining = ({ data }) => {
                   ))}
                 </div>
               )}
-            </div>
+            </Reveal>
           ))}
         </div>
 

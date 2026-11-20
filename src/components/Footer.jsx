@@ -1,12 +1,11 @@
-import React from "react";
 import MainButton from "./ui/MainButton";
 
 const Footer = ({ data }) => {
   return (
-    <>
-      <div className="left-0 border-t-2 border-solid mx-4 md:mx-10 border-gray-300"></div>
+    <footer className="bg-slate-100 dark:bg-slate-800">
+      <div className="border-t-2 border-solid mx-4 md:mx-10 border-gray-300 dark:border-gray-700"></div>
       <div className="flex flex-col md:flex-row justify-between items-center gap-4 md:gap-1 mx-4 md:mx-10 py-4 md:h-20">
-        <p className="text-xs md:text-sm text-gray-500 text-center md:text-left">
+        <p className="text-xs md:text-sm text-gray-600 dark:text-gray-400 text-center md:text-left">
           {data.copyright}
         </p>
         <p className="text-sm md:text-base font-bold  text-center md:text-left">
@@ -14,20 +13,21 @@ const Footer = ({ data }) => {
         </p>
         <div className="flex flex-wrap justify-center gap-2">
           {data.socialMedia.map((item) => (
-            <a
+            <MainButton
               key={item.id}
               href={item.url}
-              target="_blank"
-              rel="noopener noreferrer"
+              external
+              variant="icon"
+              size="sm"
+              aria-label={item.name}
+              title={item.name}
             >
-              <MainButton variant="icon" size="sm">
-                {item.icon}
-              </MainButton>
-            </a>
+              {item.icon}
+            </MainButton>
           ))}
         </div>
       </div>
-    </>
+    </footer>
   );
 };
 

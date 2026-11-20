@@ -1,179 +1,209 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef, useCallback } from "react";
 import MainButton from "../ui/MainButton";
 import SectionTitle from "../ui/SectionTitle";
-import { X } from "lucide-react";
-import { LuCircleArrowOutUpRight } from "react-icons/lu";
+import Reveal from "../ui/Reveal";
+import { X, Globe, Lock } from "lucide-react";
+import { FaGithub } from "react-icons/fa";
 
-const Projects = ({ data }) => {
-  const [selectedProject, setSelectedProject] = useState(null);
+const LiveBadge = ({ className = "" }) => (
+  <span
+    className={`inline-flex items-center gap-1.5 rounded-full bg-emerald-500/90 px-2.5 py-1 text-[11px] font-semibold uppercase tracking-wide text-white shadow-md backdrop-blur-sm ${className}`}
+  >
+    <span className="relative flex size-1.5">
+      <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-white opacity-75" />
+      <span className="relative inline-flex size-1.5 rounded-full bg-white" />
+    </span>
+    Live
+  </span>
+);
 
-  // Lock body scroll when modal is open
+const ProjectModal = ({ project, onClose, githubLabel }) => {
+  const closeRef = useRef(null);
+
   useEffect(() => {
-    if (selectedProject) {
-      document.body.style.overflow = "hidden";
-    } else {
-      document.body.style.overflow = "auto";
-    }
+    const previouslyFocused = document.activeElement;
+    closeRef.current?.focus();
+    const onKey = (e) => e.key === "Escape" && onClose();
+    window.addEventListener("keydown", onKey);
+    const { overflow } = document.body.style;
+    document.body.style.overflow = "hidden";
     return () => {
-      document.body.style.overflow = "auto";
+      window.removeEventListener("keydown", onKey);
+      document.body.style.overflow = overflow;
+      previouslyFocused?.focus?.();
     };
-  }, [selectedProject]);
+  }, [onClose]);
+
+  const description = Array.isArray(project.description)
+    ? project.description
+    : [project.description];
 
   return (
-    <section className="px-4 py-3 sm:px-6 lg:px-8 center" id="projects">
-      <div className="max-w-6xl mx-auto relative">
-        
-        <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between">
-          <SectionTitle data={data.titleComponent} />
+    <div
+      className="fixed inset-0 z-[80] flex items-center justify-center p-3 sm:p-6 bg-black/60 backdrop-blur-md animate-fade-in"
+      onClick={onClose}
+    >
+      <div
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="project-modal-title"
+        className="relative w-full max-w-3xl max-h-[90vh] overflow-y-auto overscroll-contain rounded-3xl border border-white/30 dark:border-gray-700 bg-white/90 dark:bg-gray-900/90 backdrop-blur-xl shadow-[0_20px_60px_rgba(0,0,0,0.3)] animate-modal-in"
+        onClick={(e) => e.stopPropagation()}
+      >
+        <button
+          ref={closeRef}
+          type="button"
+          onClick={onClose}
+          aria-label="Close project details"
+          className="absolute top-3 right-3 sm:top-5 sm:right-5 z-20 p-2 rounded-full bg-black/40 text-white hover:bg-black/60 backdrop-blur-md border border-white/30 transition cursor-pointer focus-visible:outline-2 focus-visible:outline-sky-400"
+        >
+          <X size={20} />
+        </button>
 
-          {/* Button positioned below title on small screens, inline on large */}
-          <div className="pb-4 lg:pb-0">
-            <a href={data.button.url}>
-              <MainButton variant="primary" size="md">
-                {data.button.name}
-                {data.button.icon}
-              </MainButton>
-            </a>
+        <div className="relative w-full aspect-[16/9] max-h-80 overflow-hidden bg-slate-100 dark:bg-slate-950">
+          <img
+            src={project.image}
+            alt={`${project.name} screenshot`}
+            className="w-full h-full object-cover object-top"
+          />
+          <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-black/40" />
+          <div className="absolute top-3 left-3 sm:top-5 sm:left-5 flex gap-2">
+            <span className="px-3 py-1 rounded-full text-xs sm:text-sm font-medium bg-sky-700/70 backdrop-blur-md border border-white/30 text-white">
+              {project.date}
+            </span>
+            {project.live && <LiveBadge />}
           </div>
         </div>
 
-        {/* Cards */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
-          {data.projects.map((project) => (
-            <div
-              key={project.id}
-              onClick={() => setSelectedProject(project)}
-              className="cursor-pointer bg-white/30 dark:bg-gray-900/40 border border-white/30 dark:border-gray-700 rounded-2xl shadow-[0_8px_32px_rgba(0,0,0,0.1)] dark:shadow-[0_8px_32px_rgba(0,0,0,0.4)] overflow-hidden hover:shadow-md dark:hover:shadow-xl transition group"
-            >
-              {/* Image */}
-              <div className="h-40 sm:h-48 overflow-hidden">
-                <img
-                  src={project.image}
-                  alt={project.name}
-                  className="w-full h-full object-contain group-hover:scale-110 transition duration-300"
-                />
-              </div>
+        <div className="p-5 sm:p-8">
+          <h2
+            id="project-modal-title"
+            className="text-xl sm:text-2xl md:text-3xl font-bold text-sky-600 dark:text-sky-400 mb-4 pr-8"
+          >
+            {project.name}
+          </h2>
 
-              {/* Title */}
-              <div className="p-4">
-                <h3 className="text-base sm:text-lg font-semibold text-gray-800 dark:text-gray-100">
-                  {project.name}
-                </h3>
-              </div>
-            </div>
-          ))}
+          <ul className="space-y-2 mb-6 text-sm sm:text-base leading-relaxed text-gray-700 dark:text-gray-300">
+            {description.map((line) => (
+              <li key={line} className="flex gap-2">
+                <span className="mt-2 size-1.5 shrink-0 rounded-full bg-sky-500" aria-hidden="true" />
+                <span>{line}</span>
+              </li>
+            ))}
+          </ul>
+
+          <h3 className="text-base sm:text-lg font-semibold mb-3 text-gray-800 dark:text-gray-200">
+            Technologies Used
+          </h3>
+          <ul className="flex flex-wrap gap-2 mb-8">
+            {project.technologies.map((tech) => (
+              <li
+                key={tech}
+                className="px-3 py-1 rounded-full text-xs sm:text-sm font-medium bg-sky-500/10 text-sky-800 dark:text-sky-200 border border-sky-500/30"
+              >
+                {tech}
+              </li>
+            ))}
+          </ul>
+
+          <div className="flex flex-wrap gap-3">
+            {project.live && (
+              <MainButton href={project.live} external size="md" className="!bg-emerald-600 dark:!bg-emerald-500">
+                <Globe size={18} aria-hidden="true" />
+                Visit Live Website
+              </MainButton>
+            )}
+            {project.github ? (
+              <MainButton href={project.github} external size="md">
+                <FaGithub size={18} aria-hidden="true" />
+                {githubLabel}
+              </MainButton>
+            ) : (
+              <span className="inline-flex items-center gap-2 text-sm text-gray-500 dark:text-gray-400">
+                <Lock size={16} aria-hidden="true" />
+                Private client repository
+              </span>
+            )}
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+const Projects = ({ data }) => {
+  const [selectedProject, setSelectedProject] = useState(null);
+  const closeModal = useCallback(() => setSelectedProject(null), []);
+
+  return (
+    <section className="px-4 py-3 sm:px-6 lg:px-8" id="projects">
+      <div className="max-w-6xl mx-auto relative">
+        <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between">
+          <SectionTitle data={data.titleComponent} />
+          <div className="pb-6 lg:pb-0 flex justify-center">
+            <MainButton href={data.button.url} external variant="primary" size="md">
+              {data.button.name}
+              {data.button.icon}
+            </MainButton>
+          </div>
         </div>
 
-        {/* Modal */}
-        {selectedProject && (
-          <>
-            {/* Backdrop with blur */}
-            <div className="fixed inset-0 z-40 bg-black/60 backdrop-blur-md opacity-100"></div>
-
-            {/* Modal Wrapper */}
-            <div
-              className="fixed inset-0 z-50 flex top-20 items-center justify-center p-4"
-              onClick={() => setSelectedProject(null)}
-            >
-              {/* Modal Container */}
-              <div
-                className="relative w-full max-w-xs sm:max-w-lg md:max-w-2xl lg:max-w-3xl max-h-[80vh] overflow-y-auto rounded-3xl pointer-events-auto"
-                onClick={(e) => e.stopPropagation()}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
+          {data.projects.map((project, i) => (
+            <Reveal key={project.id} delay={(i % 3) * 90} className="h-full">
+              <button
+                type="button"
+                onClick={() => setSelectedProject(project)}
+                aria-haspopup="dialog"
+                className="group flex h-full w-full flex-col text-left cursor-pointer bg-white/40 dark:bg-gray-900/40 border border-white/40 dark:border-gray-700 rounded-2xl shadow-[0_8px_32px_rgba(0,0,0,0.08)] dark:shadow-[0_8px_32px_rgba(0,0,0,0.4)] overflow-hidden transition-all duration-300 hover:-translate-y-1.5 hover:shadow-[0_16px_40px_rgba(14,165,233,0.25)] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sky-500"
               >
-                {/* Glass Layers */}
-                <div className="relative rounded-3xl overflow-hidden">
-                  {/* Base Glass */}
-                  <div className="absolute inset-0 bg-white/70 dark:bg-gray-900/70 backdrop-blur-xl rounded-3xl"></div>
-
-                  {/* Gradient Overlay */}
-                  <div className="absolute inset-0 bg-gradient-to-br from-white/30 via-white/10 to-transparent dark:from-gray-800/30 dark:via-gray-800/10 dark:to-transparent backdrop-blur-2xl rounded-3xl"></div>
-
-                  {/* Border */}
-                  <div className="absolute inset-0 border border-white/30 dark:border-gray-700 rounded-3xl"></div>
-
-                  {/* Shadow */}
-                  <div className="absolute inset-0 rounded-3xl shadow-[0_20px_60px_rgba(0,0,0,0.25),inset_0_1px_0_rgba(255,255,255,0.4)] dark:shadow-[0_20px_60px_rgba(0,0,0,0.5),inset_0_1px_0_rgba(255,255,255,0.1)]"></div>
-
-                  {/* Content */}
-                  <div className="relative z-10">
-                    {/* Close Button */}
-                    <button
-                      onClick={() => setSelectedProject(null)}
-                      className="absolute top-3 right-3 sm:top-4 sm:right-4 md:top-6 md:right-6 p-2 rounded-full bg-black/20 dark:bg-gray-400 backdrop-blur-md border border-white/30 dark:border-gray-600 text-white dark:text-gray-200 hover:bg-black/30 dark:hover:bg-gray-900 transition z-20 cursor-pointer"
-                    >
-                      <X size={18} className="sm:size-5 md:size-5" />
-                    </button>
-
-                    {/* Image Section */}
-                    <div className="relative w-full h-48 sm:h-56 md:h-64 lg:h-80 overflow-hidden">
-                      <img
-                        src={selectedProject.image}
-                        alt={selectedProject.name}
-                        className="w-full h-full object-cover"
-                      />
-
-                      {/* Image Overlay */}
-                      <div className="absolute inset-0 bg-gradient-to-b from-transparent via-blue-400/20 to-blue-500/40 dark:via-blue-600/20 dark:to-blue-800/40"></div>
-
-                      {/* Year Badge */}
-                      <div className="absolute top-3 left-3 sm:top-4 sm:left-4 md:top-6 md:left-6 px-3 py-1 sm:px-4 sm:py-2 rounded-full text-xs sm:text-sm font-medium bg-blue-700/40 dark:bg-blue-600/40 backdrop-blur-md border border-white/30 dark:border-gray-600 text-white shadow-lg">
-                        {selectedProject.date || "2024"}
-                      </div>
-                    </div>
-
-                    {/* Content */}
-                    <div className="p-4 sm:p-6 md:p-8 lg:p-12">
-                      {/* Title */}
-                      <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-blue-500 dark:text-blue-400 mb-3 sm:mb-4">
-                        {selectedProject.name}
-                      </h2>
-
-                      {/* Description */}
-                      <p className="text-gray-700 dark:text-gray-300 text-sm sm:text-base md:text-lg leading-relaxed mb-6 sm:mb-8 whitespace-pre-line">
-                        {selectedProject.description}
-                      </p>
-
-                      {/* Technologies */}
-                      <div>
-                        <h3 className="text-base sm:text-lg font-semibold mb-3 sm:mb-4 text-gray-800 dark:text-gray-200">
-                          Technologies Used
-                        </h3>
-
-                        <div className="flex flex-wrap gap-2 sm:gap-3 mb-4">
-                          {selectedProject.technologies.map((tech, index) => (
-                            <span
-                              key={index}
-                              className="px-3 py-1 sm:px-4 sm:py-2 rounded-full text-xs sm:text-sm font-medium bg-blue-700/40 dark:bg-blue-600/30 text-white border border-blue-500/30 dark:border-blue-400/30 backdrop-blur-sm"
-                            >
-                              {tech}
-                            </span>
-                          ))}
-                        </div>
-                      </div>
-
-                      {/* Github url */}
-                      <div className="text-base sm:text-lg">
-                        <h3 className=" font-semibold mb-3 sm:mb-4 text-gray-800 dark:text-gray-200">
-                          Github Repo
-                        </h3>
-                        <a href={selectedProject.github}>
-                          <MainButton variant="primary" size="md">
-                            {data.button.name}
-                            <LuCircleArrowOutUpRight
-                              size={16}
-                              className="sm:size-5 md:size-5"
-                            />
-                          </MainButton>
-                        </a>
-                      </div>
-                    </div>
-                  </div>
+                <div className="relative h-44 sm:h-48 w-full overflow-hidden bg-slate-100 dark:bg-slate-950">
+                  <img
+                    src={project.image}
+                    alt=""
+                    loading="lazy"
+                    decoding="async"
+                    className="w-full h-full object-cover object-top transition-transform duration-500 group-hover:scale-105"
+                  />
+                  {project.live && <LiveBadge className="absolute top-3 left-3" />}
+                  <span className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-slate-950/70 to-transparent px-4 pb-3 pt-10 text-xs font-medium text-white opacity-0 transition-opacity duration-300 group-hover:opacity-100 group-focus-visible:opacity-100">
+                    View details →
+                  </span>
                 </div>
-              </div>
-            </div>
-          </>
-        )}
+
+                <div className="flex flex-1 flex-col gap-3 p-4">
+                  <h3 className="text-base sm:text-lg font-semibold text-gray-800 dark:text-gray-100">
+                    {project.name}
+                  </h3>
+                  <ul className="mt-auto flex flex-wrap gap-1.5" aria-label="Technologies">
+                    {project.technologies.slice(0, 4).map((tech) => (
+                      <li
+                        key={tech}
+                        className="rounded-full bg-sky-500/10 px-2 py-0.5 text-[11px] font-medium text-sky-700 dark:text-sky-300"
+                      >
+                        {tech}
+                      </li>
+                    ))}
+                    {project.technologies.length > 4 && (
+                      <li className="rounded-full bg-slate-500/10 px-2 py-0.5 text-[11px] font-medium text-slate-600 dark:text-slate-300">
+                        +{project.technologies.length - 4}
+                      </li>
+                    )}
+                  </ul>
+                </div>
+              </button>
+            </Reveal>
+          ))}
+        </div>
       </div>
+
+      {selectedProject && (
+        <ProjectModal
+          project={selectedProject}
+          onClose={closeModal}
+          githubLabel="View on GitHub"
+        />
+      )}
     </section>
   );
 };

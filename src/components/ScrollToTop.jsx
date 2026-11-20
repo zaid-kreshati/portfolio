@@ -13,7 +13,8 @@ const ScrollToTop = () => {
       }
     };
 
-    window.addEventListener("scroll", toggleVisibility);
+    toggleVisibility();
+    window.addEventListener("scroll", toggleVisibility, { passive: true });
 
     return () => window.removeEventListener("scroll", toggleVisibility);
   }, []);
@@ -29,10 +30,11 @@ const ScrollToTop = () => {
     visible && (
       <MainButton
         size="arrow"
-        className="fixed bottom-25 right-6 z-30 backdrop-blur-xs"
+        className="fixed bottom-6 right-4 sm:right-6 z-40 backdrop-blur-xs animate-fade-up"
         onClick={scrollToTop}
+        aria-label="Back to top"
       >
-        ↑
+        <span aria-hidden="true">↑</span>
       </MainButton>
     )
   );

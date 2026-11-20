@@ -29,19 +29,35 @@ const MainButton = ({
   size = "md",
   fullWidth = false,
   className = "",
+  href,
+  external = false,
+  type = "button",
   ...props
 }) => {
+  const classes = clsx(
+    baseStyles,
+    variants[variant],
+    sizes[size],
+    fullWidth ? "w-full" : "w-fit",
+    "focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sky-500",
+    className
+  );
+
+  if (href) {
+    return (
+      <a
+        href={href}
+        className={classes}
+        {...(external && { target: "_blank", rel: "noopener noreferrer" })}
+        {...props}
+      >
+        {children}
+      </a>
+    );
+  }
+
   return (
-    <button
-      className={clsx(
-        baseStyles,
-        variants[variant],
-        sizes[size],
-        fullWidth ? "w-full" : "w-auto",
-        className
-      )}
-      {...props}
-    >
+    <button type={type} className={classes} {...props}>
       {children}
     </button>
   );

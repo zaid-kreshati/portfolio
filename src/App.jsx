@@ -30,33 +30,51 @@ import {
   LanguagesItem,
 } from "./data";
 
+const getInitialTheme = () => {
+  try {
+    const saved = localStorage.getItem("theme");
+    if (saved) return saved === "dark";
+  } catch {
+    /* ignore */
+  }
+  return window.matchMedia("(prefers-color-scheme: dark)").matches;
+};
+
 function App() {
   const [isOpen, setIsOpen] = useState(false);
-  const [darkMode, setDarkMode] = useState(false);
+  // Read the theme synchronously so the first render already matches the
+  // class that the inline script in index.html put on <html> (no flash).
+  const [darkMode, setDarkMode] = useState(getInitialTheme);
 
   useEffect(() => {
-    const saved = localStorage.getItem("theme");
-    if (saved) {
-      setDarkMode(saved === "dark");
-    } else {
-      setDarkMode(window.matchMedia("(prefers-color-scheme: dark)").matches);
-    }
-  }, []);
-
-  useEffect(() => {
-    localStorage.setItem("theme", darkMode ? "dark" : "light");
-    if (darkMode) {
-      document.documentElement.classList.add("dark");
-    } else {
-      document.documentElement.classList.remove("dark");
+    document.documentElement.classList.toggle("dark", darkMode);
+    try {
+      localStorage.setItem("theme", darkMode ? "dark" : "light");
+    } catch {
+      /* storage unavailable (private mode) – theme just won't persist */
     }
   }, [darkMode]);
 
+  // Close the mobile menu with Escape.
+  useEffect(() => {
+    if (!isOpen) return undefined;
+    const onKey = (e) => e.key === "Escape" && setIsOpen(false);
+    window.addEventListener("keydown", onKey);
+    return () => window.removeEventListener("keydown", onKey);
+  }, [isOpen]);
+
   return (
-    <div className={"text-dark  dark:text-white"}>
+    <div className="text-slate-900 dark:text-white">
+      <a
+        href="#main"
+        className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[100] focus:rounded-lg focus:bg-sky-600 focus:px-4 focus:py-2 focus:text-white"
+      >
+        Skip to content
+      </a>
       {isOpen && (
         <div
-          className="fixed inset-0 bg-white/70 backdrop-blur-md bg-opacity-50 z-50"
+          aria-hidden="true"
+          className="fixed inset-0 bg-white/70 dark:bg-black/50 backdrop-blur-md z-50 animate-fade-in"
           onClick={() => setIsOpen(false)}
         />
       )}
@@ -70,7 +88,8 @@ function App() {
       <ScrollToTop />
 
       <main
-        className=" w-screen overflow-hidden  bg-gradient-to-br from-slate-50 to-slate-100
+        id="main"
+        className="w-full overflow-hidden bg-gradient-to-br from-slate-50 to-slate-100
              dark:from-slate-900 dark:to-slate-800 "
       >
         <Hero data={HeroItem} />
@@ -84,8 +103,8 @@ function App() {
         <Certifications data={CertificationsData} />
         <Languages data={LanguagesItem} />
         <Contact data={ContactData} />
-        <Footer data={FooterData} />
       </main>
+      <Footer data={FooterData} />
     </div>
   );
 }

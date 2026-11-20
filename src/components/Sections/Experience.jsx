@@ -1,4 +1,3 @@
-import React from "react";
 import {
   BriefcaseBusiness,
   Building2,
@@ -7,6 +6,7 @@ import {
   MapPin,
 } from "lucide-react";
 import SectionTitle from "../ui/SectionTitle";
+import Reveal from "../ui/Reveal";
 
 const ExperienceCard = ({ experience }) => (
   <article className="rounded-2xl border border-gray-200/80 bg-white/35 p-5 text-left shadow-md transition-all duration-300 hover:-translate-y-1 hover:shadow-lg dark:border-gray-700 dark:bg-gray-900/40 sm:p-6">
@@ -74,7 +74,7 @@ const ExperienceCard = ({ experience }) => (
 const Experience = ({ data }) => {
   return (
     <section id="experience" className="relative px-6 py-4 sm:py-16">
-      <img src={data.rightDots} alt="" className="absolute right-0 top-0 hidden sm:block" />
+      <img src={data.rightDots} alt="" aria-hidden="true" className="absolute right-0 top-0 hidden sm:block" />
       <SectionTitle data={data.titleComponent} />
 
       <div className="relative mx-auto max-w-5xl">
@@ -87,7 +87,11 @@ const Experience = ({ data }) => {
             return (
               <div key={experience.id} className="relative flex items-start justify-start sm:items-center sm:justify-between">
                 <div className={`w-full sm:w-1/2 ${isLeft ? "sm:pr-8" : "hidden sm:block sm:opacity-0"}`}>
-                  {isLeft && <ExperienceCard experience={experience} />}
+                  {isLeft && (
+                    <Reveal direction="left">
+                      <ExperienceCard experience={experience} />
+                    </Reveal>
+                  )}
                 </div>
 
                 <span className="absolute left-0 flex size-4 -translate-x-6 sm:relative sm:translate-x-0">
@@ -96,7 +100,11 @@ const Experience = ({ data }) => {
                 </span>
 
                 <div className={`w-full sm:w-1/2 ${!isLeft ? "sm:pl-8" : "hidden sm:block sm:opacity-0"}`}>
-                  {!isLeft && <ExperienceCard experience={experience} />}
+                  {!isLeft && (
+                    <Reveal direction="right">
+                      <ExperienceCard experience={experience} />
+                    </Reveal>
+                  )}
                 </div>
               </div>
             );
@@ -104,7 +112,7 @@ const Experience = ({ data }) => {
         </div>
       </div>
 
-      <img src={data.leftDots} alt="" className="absolute bottom-0 left-0 hidden sm:block" />
+      <img src={data.leftDots} alt="" aria-hidden="true" className="absolute bottom-0 left-0 hidden sm:block" />
     </section>
   );
 };

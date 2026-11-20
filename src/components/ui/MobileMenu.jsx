@@ -1,28 +1,25 @@
-import React from "react";
 import { X } from "lucide-react";
 import MainButton from "./MainButton";
 
 const MobileMenu = ({ isOpen, setIsOpen, navItems }) => {
-
-   const scrollToContact = () => {
-    const contactEl = document.querySelector("#contact");
-    if (contactEl) {
-      contactEl.scrollIntoView({ behavior: "smooth" });
-    }
-    setIsOpen(false)
-  };
+  const close = () => setIsOpen(false);
 
   return (
     <div
-      className={`fixed inset-y-0 right-0 z-70 bg-white/30 dark:bg-black/50 backdrop-blur-xl transition-transform duration-300 ease-in-out w-full max-w-sm sm:max-w-md border-l border-white/20 dark:border-white/10 shadow-2xl ${
-        isOpen ? "translate-x-0" : "translate-x-full"
+      id="mobile-menu"
+      role="dialog"
+      aria-modal="true"
+      aria-label="Site navigation"
+      inert={!isOpen}
+      className={`fixed inset-y-0 right-0 z-70 bg-white/70 dark:bg-slate-950/80 backdrop-blur-xl transition-[transform,visibility] duration-300 ease-out w-full max-w-sm sm:max-w-md border-l border-white/20 dark:border-white/10 ${
+        isOpen ? "translate-x-0 shadow-2xl" : "translate-x-full invisible"
       }`}
     >
-      <div className="relative h-full flex flex-col p-6">
-        {/* Close Button */}
+      <div className="relative h-full flex flex-col p-6 overflow-y-auto">
         <div className="flex justify-end mb-8">
           <button
-            onClick={() => setIsOpen(false)}
+            type="button"
+            onClick={close}
             className="p-2 rounded-full text-gray-800 dark:text-gray-200 bg-white/40 dark:bg-white/10 hover:bg-white/60 dark:hover:bg-white/20 transition-all duration-200"
             aria-label="Close menu"
           >
@@ -30,27 +27,25 @@ const MobileMenu = ({ isOpen, setIsOpen, navItems }) => {
           </button>
         </div>
 
-        {/* Nav Links */}
-        <nav className="flex flex-col gap-3 flex-1">
-          {navItems.sections.map((section) => (
+        <nav className="flex flex-col gap-3 flex-1" aria-label="Mobile">
+          {navItems.sections.map((section, i) => (
             <a
               key={section.id}
-              href={`#${section.id.toLowerCase()}`}
-              className="block px-4 py-3 rounded-xl text-base font-medium text-gray-800 dark:text-gray-200 bg-white/20 dark:bg-white/5 hover:bg-white/40 dark:hover:bg-white/10 transition-all duration-200"
-              onClick={() => setIsOpen(false)}
+              href={`#${section.id}`}
+              onClick={close}
+              style={{ transitionDelay: isOpen ? `${80 + i * 40}ms` : "0ms" }}
+              className={`block px-4 py-3 rounded-xl text-base font-medium text-gray-800 dark:text-gray-200 bg-white/30 dark:bg-white/5 hover:bg-white/60 dark:hover:bg-white/10 transition-all duration-300
+                ${isOpen ? "opacity-100 translate-x-0" : "opacity-0 translate-x-6"}`}
             >
               {section.label}
             </a>
           ))}
         </nav>
 
-        {/* Bottom Button */}
         <div className="mt-auto pt-6">
-=          <div onClick={scrollToContact} className="cursor-pointer">
-            <MainButton fullWidth variant="blur">
-              Let's Talk
-            </MainButton>
-          </div>
+          <MainButton href="#contact" onClick={close} fullWidth variant="blur">
+            Let's Talk
+          </MainButton>
         </div>
       </div>
     </div>

@@ -1,18 +1,19 @@
-import React from "react";
 import { Globe } from "lucide-react";
 import SectionTitle from "../ui/SectionTitle";
+import Reveal from "../ui/Reveal";
 
 const Languages = ({ data }) => {
   return (
-    <section className="w-full max-w-6xl mx-auto px-4 ">
+    <section id="languages" className="w-full max-w-6xl mx-auto px-4 pb-8">
       {/* Section title */}
      <SectionTitle data={data.titleComponent} />
 
       {/* Cards container */}
       <div className="flex flex-wrap justify-center gap-6">
         {data.items.map((lang, index) => (
-          <div
-            key={index}
+          <Reveal
+            key={lang.name}
+            delay={index * 100}
             className="
               relative px-6 py-4 rounded-2xl min-w-[220px]
               bg-white/30 dark:bg-white/10
@@ -20,8 +21,8 @@ const Languages = ({ data }) => {
               border border-white/30
               shadow-[0_8px_32px_rgba(0,0,0,0.1)]
               flex items-center gap-4
-              hover:scale-105 hover:shadow-xl
-              transition-all duration-300
+              hover:-translate-y-1 hover:shadow-xl
+              transition-[translate,box-shadow] duration-300
               cursor-default"
           >
             {/* Inner glow */}
@@ -31,7 +32,7 @@ const Languages = ({ data }) => {
 
             {/* Icon */}
             <div className="relative z-10">
-              <Globe className="text-blue-500" size={28} />
+              <Globe className="text-sky-500" size={28} aria-hidden="true" />
             </div>
 
             {/* Text */}
@@ -46,7 +47,7 @@ const Languages = ({ data }) => {
                 </span>
               )}
             </div>
-          </div>
+          </Reveal>
         ))}
       </div>
     </section>
