@@ -2,14 +2,50 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="svg" sizes="32" href="/portfolio/favicon.ico" />
-
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Zaid Kreshati | Portfolio</title>
-    <script type="module" crossorigin src="/portfolio/assets/index-VSi0ILJn.js"></script>
-    <link rel="stylesheet" crossorigin href="/portfolio/assets/index-B81saoHz.css">
+    <title>Zaid Kreshati | Full Stack Developer (Laravel &amp; React)</title>
+    <meta
+      name="description"
+      content="Portfolio of Zaid Kreshati, a Full Stack Developer specializing in Laravel and React. Scalable REST APIs, responsive web apps, and live production websites."
+    />
+    <meta name="author" content="Zaid Kreshati" />
+    <meta name="color-scheme" content="light dark" />
+    <meta name="theme-color" content="#f8fafc" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#0f172a" media="(prefers-color-scheme: dark)" />
+    <link rel="canonical" href="https://zaid-kreshati.github.io/portfolio/" />
+
+    <link rel="icon" type="image/svg+xml" href="/portfolio/favicon.svg" />
+    <link rel="icon" type="image/x-icon" href="/portfolio/favicon.ico" sizes="48x48" />
+    <link rel="apple-touch-icon" href="/portfolio/apple-touch-icon.png" />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Zaid Kreshati" />
+    <meta property="og:title" content="Zaid Kreshati | Full Stack Developer" />
+    <meta
+      property="og:description"
+      content="Full Stack Developer specializing in Laravel and React. See my projects, including three live production websites."
+    />
+    <meta property="og:url" content="https://zaid-kreshati.github.io/portfolio/" />
+    <meta property="og:image" content="https://zaid-kreshati.github.io/portfolio/og-image.jpg" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Zaid Kreshati | Full Stack Developer" />
+    <meta name="twitter:image" content="https://zaid-kreshati.github.io/portfolio/og-image.jpg" />
+
+    <!-- Apply the saved theme before first paint to avoid a light/dark flash -->
+    <script>
+      try {
+        var t = localStorage.getItem("theme");
+        if (t === "dark" || (!t && matchMedia("(prefers-color-scheme: dark)").matches))
+          document.documentElement.classList.add("dark");
+      } catch (e) {}
+    </script>
+    <script type="module" crossorigin src="/portfolio/assets/index-jCktrQRT.js"></script>
+    <link rel="stylesheet" crossorigin href="/portfolio/assets/index-DsdiQ42I.css">
   </head>
   <body>
+    <noscript>This portfolio needs JavaScript enabled to display.</noscript>
     <div id="root"></div>
   </body>
 </html>
