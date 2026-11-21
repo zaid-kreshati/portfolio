@@ -18,16 +18,6 @@ const Hero = ({ data }) => {
       <div className="relative max-w-7xl mx-auto px-6 sm:px-10 lg:px-20">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
           <div className="relative order-2 md:order-1 z-20">
-            <p
-              className="inline-flex items-center gap-2 mb-5 rounded-full border border-emerald-500/30 bg-emerald-500/10 px-3 py-1 text-xs sm:text-sm font-medium text-emerald-700 dark:text-emerald-300 animate-fade-up"
-            >
-              <span className="relative flex size-2">
-                <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400 opacity-75" />
-                <span className="relative inline-flex size-2 rounded-full bg-emerald-500" />
-              </span>
-              {data.badge}
-            </p>
-
             <h1
               className="text-4xl md:text-5xl lg:text-6xl font-bold mb-4 animate-fade-up"
               style={{ animationDelay: "100ms" }}

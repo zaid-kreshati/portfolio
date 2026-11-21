@@ -62,7 +62,6 @@ export const HeroItem = {
   description:
     "focused on building reliable backend systems and modern frontend experiences using Laravel and React.",
   button: "Download CV",
-  badge: "Open to work · 3 live production websites",
   lines: Lines,
   Squers: Squers,
   personal_photo: Personal_photo,
@@ -242,7 +241,7 @@ export const ExperienceItem = {
       company: "ICPC",
       date: "2021",
       description:
-        "Competed in the International Collegiate Programming Contest (ICPC), one of the most prestigious programming competitions worldwide. Participated in 4 contests, solving complex algorithmic problems under time pressure. Achievements: 500+ problems solved, best rank 16/31, 4x contests. Strong skills in C++, algorithms, data structures, problem solving, and mathematics.",
+        "Competed in the International Collegiate Programming Contest (ICPC), one of the most prestigious programming competitions worldwide. Participated in 4 contests, solving complex algorithmic problems under time pressure. Achievements: 300+ problems solved, best rank 16/31, 4x contests. Strong skills in C++, algorithms, data structures, problem solving, and mathematics.",
     },
   ],
 };
@@ -373,7 +372,7 @@ export const ProjectsData = {
         "Implemented check-in/check-out locking system",
         "Optimized performance with caching and pagination",
       ],
-      github: "https://github.com/zaid-kreshati/file-management",
+      github: "https://github.com/zaid-kreshati/files-management",
     },
     {
       id: 4,
